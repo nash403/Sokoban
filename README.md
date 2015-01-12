@@ -1,1 +1,1 @@
-# Sokoban game with the lille-game-framework
+# Sokoban Team 4
