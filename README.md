@@ -1,1 +1,1 @@
-# Sokoban Game with the lille-game-framework
+# Sokoban game with the lille-game-framework
