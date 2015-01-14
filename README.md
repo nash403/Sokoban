@@ -1,13 +1,6 @@
-# Game Framework
+# Sokoban Game
 
-[![Build Status](https://travis-ci.org/DamienCassou/lille-game-framework.png?branch=master)](https://travis-ci.org/DamienCassou/lille-game-framework)
+You'll have to import the game framework in order to have the game compiling.
 
-As far as I know, this game framework has mostly been written by David
-Auber and contains a lot of contributions from Philippe Narbel and
-Damien Cassou.
+The game framework : https://github.com/DamienCassou/lille-game-framework
 
-Pour lancer les tests, tapez :
-
-```bash
-$ mvn test
-```
