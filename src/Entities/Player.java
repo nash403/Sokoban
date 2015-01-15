@@ -3,9 +3,10 @@ package Entities;
 import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
+import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
-import gameframework.motion.MoveStrategyRandom;
+import gameframework.motion.MoveStrategyKeyboard;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -15,14 +16,20 @@ public class Player extends GameMovable implements Drawable, GameEntity/*, Movab
 	protected DrawableImage image;
 	protected GameCanvas canvas;
 	
-	public Player(GameCanvas canvas, int x, int y) {
+	public Player(GameData data, int x, int y) {
 		super();
-		moveDriver.setStrategy(new MoveStrategyRandom());
+		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard();
+		this.moveDriver.setStrategy(keyboard);
+		
+		/*On rajoute le MoveBlockerChecker du data au personnage*/
+		this.moveDriver.setmoveBlockerChecker(data.getMoveBlockerChecker());
+		
 		position.x = x;
 		position.y = y;
-		this.canvas = canvas;
+		this.canvas = data.getCanvas();
 		image = new DrawableImage("/images/Locke.gif", canvas) ;
-		//setSpeedVector(new SpeedVector(new Point()));
+		this.canvas.addKeyListener(keyboard);
+		
 	}
 
 	@Override
@@ -35,7 +42,7 @@ public class Player extends GameMovable implements Drawable, GameEntity/*, Movab
 	
 	@Override
 	public Rectangle getBoundingBox() {
-		return new Rectangle(200,200);
+		return new Rectangle(image.getWidth(), 20);
 	}
 
 	@Override
