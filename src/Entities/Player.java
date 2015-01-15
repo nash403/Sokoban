@@ -4,20 +4,22 @@ import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameEntity;
+import gameframework.motion.GameMovable;
+import gameframework.motion.MoveStrategyRandom;
 
 import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.Rectangle;
 
-public class Player implements Drawable, GameEntity/*, Movable, Overlappable*/ {
+public class Player extends GameMovable implements Drawable, GameEntity/*, Movable, Overlappable*/ {
 
 	protected DrawableImage image;
 	protected GameCanvas canvas;
-	protected int x;
-	protected int y;
 	
 	public Player(GameCanvas canvas, int x, int y) {
-		this.x = x;
-		this.y = y;
+		super();
+		moveDriver.setStrategy(new MoveStrategyRandom());
+		position.x = x;
+		position.y = y;
 		this.canvas = canvas;
 		image = new DrawableImage("/images/Locke.gif", canvas) ;
 		//setSpeedVector(new SpeedVector(new Point()));
@@ -25,9 +27,24 @@ public class Player implements Drawable, GameEntity/*, Movable, Overlappable*/ {
 
 	@Override
 	public void draw(Graphics g) {
-		//canvas.drawImage(g, image, x, y);
-		image.draw(g);
+		canvas.drawImage(g, image.getImage(), position.x, position.y);
+		//image.draw(g);
 		
+	}
+
+	
+	@Override
+	public Rectangle getBoundingBox() {
+		return new Rectangle(200,200);
+	}
+
+	@Override
+	public void oneStepMoveAddedBehavior() {
+	/*	Point a = position ;
+		a = position ;
+		a.getX() ;
+		position = position ;
+		speedVector = speedVector ;	*/
 	}
 	
 }
