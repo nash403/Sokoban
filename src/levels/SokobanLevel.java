@@ -1,12 +1,10 @@
 package levels;
 
-import gameframework.drawing.GameUniverseViewPort;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
-import Entities.Player;
 
-//Sert de modèle de base
+//Sert de modï¿½le de base
 public class SokobanLevel extends GameLevelDefaultImpl {
 
 	public SokobanLevel(GameData data) {

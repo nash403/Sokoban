@@ -1,9 +1,9 @@
 package levels;
 
-import Entities.Player;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
+import Entities.Player;
 
 public class Level1 extends GameLevelDefaultImpl {
 
@@ -17,7 +17,9 @@ public class Level1 extends GameLevelDefaultImpl {
 		universe = this.data.getUniverse();
 		this.gameBoard = new GameUniverseViewPortDefaultImpl(data);
 		//universe.addGameEntity(new Player(data.getCanvas()));
-		universe.addGameEntity(new Player(data.getCanvas(), 0, 0));
+		
+		
+		universe.addGameEntity(new Player(data.getCanvas(), 50, 50));
 	}
 
 
