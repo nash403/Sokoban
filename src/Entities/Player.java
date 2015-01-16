@@ -1,4 +1,4 @@
-package entities;
+package Entities;
 
 import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
@@ -8,11 +8,12 @@ import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.GameMovableDriverDefaultImpl;
 import gameframework.motion.MoveStrategyKeyboard;
+import gameframework.motion.overlapping.Overlappable;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Player extends GameMovable implements Drawable, GameEntity {
+public class Player extends GameMovable implements Drawable, GameEntity, Overlappable {
 
 	protected DrawableImage image;
 	protected GameCanvas canvas;
@@ -47,10 +48,6 @@ public class Player extends GameMovable implements Drawable, GameEntity {
 
 	@Override
 	public void oneStepMoveAddedBehavior() {
-		/*
-		 * Point a = position ; a = position ; a.getX() ; position = position ;
-		 * speedVector = speedVector ;
-		 */
 	}
 
 }

@@ -1,8 +1,8 @@
 package levels;
 
-import entities.Crate;
-import entities.Player;
-import entities.Wall;
+import Entities.Crate;
+import Entities.Player;
+import Entities.Wall;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;

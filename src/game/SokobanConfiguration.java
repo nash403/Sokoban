@@ -1,8 +1,8 @@
 package game;
 
-import gameframework.drawing.GameCanvas;
-import gameframework.drawing.GameCanvasDefaultImpl;
 import gameframework.game.GameConfiguration;
+import gameframework.motion.overlapping.OverlapRulesApplier;
+import overlap.SokobanOverlapRulesApplier;
 
 public class SokobanConfiguration extends GameConfiguration {
 		public SokobanConfiguration(){
@@ -10,8 +10,8 @@ public class SokobanConfiguration extends GameConfiguration {
 		}
 		
 		@Override
-		public GameCanvas createCanvas(){
-			return new GameCanvasDefaultImpl();
+		public OverlapRulesApplier createOverlapRulesApplier(){
+			return new SokobanOverlapRulesApplier();
 		}
 		
 }
