@@ -1,6 +1,8 @@
 package levels;
 
-import Entities.Player;
+import entities.Crate;
+import entities.Player;
+import entities.Wall;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
@@ -16,8 +18,11 @@ public class Level1 extends GameLevelDefaultImpl {
 	protected void init() {
 		universe = this.data.getUniverse();
 		this.gameBoard = new GameUniverseViewPortDefaultImpl(data);
-		//universe.addGameEntity(new Player(data.getCanvas()));
-		universe.addGameEntity(new Player(data.getCanvas(), 0, 0));
+		
+		/*player prend désormé directement un data, pour prendre son canevas et sont moveblocker*/
+		universe.addGameEntity(new Player(data, 50, 50));
+		universe.addGameEntity(new Crate(data,100,100));
+		universe.addGameEntity(new Wall(data.getCanvas(), 0, 0));
 	}
 
 
