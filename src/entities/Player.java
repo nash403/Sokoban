@@ -28,7 +28,7 @@ public class Player extends GameMovable implements Drawable, GameEntity {
 		position.x = x;
 		position.y = y;
 		this.canvas = data.getCanvas();
-		image = new DrawableImage("/images/Locke.gif", canvas);
+		image = new DrawableImage("/images/man1.gif", canvas);
 		this.canvas.addKeyListener(keyboard);
 
 	}
@@ -40,7 +40,7 @@ public class Player extends GameMovable implements Drawable, GameEntity {
 
 	@Override
 	public Rectangle getBoundingBox() {
-		Rectangle rectangle = new Rectangle(image.getWidth(), image.getHeight());
+		Rectangle rectangle = new Rectangle(image.getWidth() - 5, image.getHeight() - 5);
 		rectangle.setLocation(position.x, position.y);
 		return rectangle;
 	}

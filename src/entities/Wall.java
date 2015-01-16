@@ -15,17 +15,21 @@ public class Wall implements Drawable, GameEntity, MoveBlocker {
 	protected GameCanvas canvas;
 	protected int x;
 	protected int y;
+	protected int width;
+	protected int height;
 	
 	public Wall(GameCanvas canvas, int x, int y) {
-		this.x = y;
-		this.y = y;
 		this.canvas = canvas;
-		image = new DrawableImage("/images/wall.gif", canvas) ;	
+		image = new DrawableImage("/images/wall.gif", canvas);
+		width = image.getWidth();
+		height = image.getHeight();
+		this.x = x*width;
+		this.y = y*height;
 	}
 
 	@Override
 	public Rectangle getBoundingBox() {
-		Rectangle rectangle = new Rectangle(image.getWidth(), image.getHeight());
+		Rectangle rectangle = new Rectangle(width, height);
 		rectangle.setLocation(x, y);
 		return rectangle;
 	}
@@ -33,7 +37,6 @@ public class Wall implements Drawable, GameEntity, MoveBlocker {
 	@Override
 	public void draw(Graphics g) {
 		canvas.drawImage(g, image.getImage(), x, y);
-		
 	}
 
 }

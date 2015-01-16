@@ -33,7 +33,7 @@ public class Crate extends GameMovable implements Drawable, GameEntity, MoveBloc
 		this.x = x;
 		this.y = y;
 		this.canvas = data.getCanvas();
-		image = new DrawableImage("/images/Crate.gif", canvas);
+		image = new DrawableImage("/images/crate.gif", canvas);
 
 	}
 
