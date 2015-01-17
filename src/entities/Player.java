@@ -1,4 +1,4 @@
-package Entities;
+package entities;
 
 import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
@@ -13,7 +13,8 @@ import gameframework.motion.overlapping.Overlappable;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-public class Player extends GameMovable implements Drawable, GameEntity, Overlappable {
+public class Player extends GameMovable implements Drawable, GameEntity,
+		Overlappable {
 
 	protected DrawableImage image;
 	protected GameCanvas canvas;
@@ -41,7 +42,8 @@ public class Player extends GameMovable implements Drawable, GameEntity, Overlap
 
 	@Override
 	public Rectangle getBoundingBox() {
-		Rectangle rectangle = new Rectangle(image.getWidth() - 5, image.getHeight() - 5);
+		Rectangle rectangle = new Rectangle(image.getWidth() - 5,
+				image.getHeight() - 5);
 		rectangle.setLocation(position.x, position.y);
 		return rectangle;
 	}
