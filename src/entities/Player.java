@@ -22,6 +22,7 @@ public class Player extends GameMovable implements Drawable, GameEntity,
 	public Player(GameData data, int x, int y) {
 		super();
 		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard();
+		keyboard.getSpeedVector().setSpeed(data.getConfiguration().getSpriteSize());
 		GameMovableDriverDefaultImpl moveDriver = new GameMovableDriverDefaultImpl();
 		moveDriver.setStrategy(keyboard);
 		moveDriver.setmoveBlockerChecker(data.getMoveBlockerChecker());
