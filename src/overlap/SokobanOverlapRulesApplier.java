@@ -31,8 +31,10 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	}
 	
 	public void overlapRule(Switch gameSwitch, IceCrate iceCrate) {
-		gameSwitch.incrementValidatedSwitch();
-		checkIfEndOfLevel();
+		if(iceCrate.getSpeedVector().getSpeed() == 0){
+			gameSwitch.incrementValidatedSwitch();
+			checkIfEndOfLevel();
+		}
 	}
 	public void overlapRule(Switch gameSwitch, DefaultCrate crate) {
 		gameSwitch.incrementValidatedSwitch();
@@ -49,7 +51,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 					+ speed.getSpeed() * speed.getDirection().x
 					* -1, movable.getPosition().y + speed.getSpeed()
 					* speed.getDirection().y * -1));
-		speed = SpeedVector.createNullVector();
+		movable.setSpeedVector(SpeedVector.createNullVector());
 	}
 	
 	public void overlapBetweenSokobanEntities(SokobanMovable overlapper, SokobanMovable overlapped){
