@@ -56,12 +56,12 @@ public class Level1 extends GameLevelDefaultImpl {
 
 	public void createBottomSideWalls() {
 		for (int i = 0; i < columns; i++)
-			universe.addGameEntity(new Wall(data.getCanvas(), i, columns-1));
+			universe.addGameEntity(new Wall(data.getCanvas(), i, rows-1));
 	}
 
 	public void createRightSideWalls() {
 		for (int i = rows; i > 0; i--)
-			universe.addGameEntity(new Wall(data.getCanvas(), rows-1, i));
+			universe.addGameEntity(new Wall(data.getCanvas(), columns-1, i));
 	}
 
 	public void createTopSideWalls() {
