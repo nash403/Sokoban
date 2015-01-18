@@ -33,10 +33,11 @@ public class Level1 extends GameLevelDefaultImpl {
 		 * player prend désormé directement un data, pour prendre son canevas et
 		 * sont moveblocker
 		 */
+		universe.addGameEntity(new Switch(data, 1, 3));
+		universe.addGameEntity(new Switch(data, 6, 3));
 		universe.addGameEntity(new DefaultCrate(data, 3, 3));
 		universe.addGameEntity(new DefaultCrate(data, 3, 5));
 		universe.addGameEntity(new IceCrate(data, 5, 5));
-		universe.addGameEntity(new Switch(data, 1, 3));
 		universe.addGameEntity(new Player(data, 2, 2));
 		createContourWalls();
 		createCourse();

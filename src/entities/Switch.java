@@ -19,8 +19,11 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 	protected int y;
 	protected int width;
 	protected int height;
+	protected static int totalSwitch = 0;
+	protected static int validatedSwitch = 0;
 
 	public Switch(GameData data, int x, int y) {
+		totalSwitch++;
 		this.canvas = data.getCanvas();
 		image = new DrawableImage("/images/switch.gif", canvas);
 		width = image.getWidth();
@@ -41,7 +44,20 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 
 	@Override
 	public void draw(Graphics g) {
+	
+		
+		validatedSwitch = 0;
 		canvas.drawImage(g, image.getImage(), x, y);
 	}
 
+	public void incrementValidatedSwitch(){
+		validatedSwitch++;
+	}
+	
+	public static boolean isEndOfLevel(){
+		if(validatedSwitch == totalSwitch){
+			return true;
+		}
+		return false;
+	}
 }
