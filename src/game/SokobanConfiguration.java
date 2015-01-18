@@ -6,7 +6,7 @@ import overlap.SokobanOverlapRulesApplier;
 
 public class SokobanConfiguration extends GameConfiguration {
 	public SokobanConfiguration() {
-		super(12, 12, 32, 1);
+		super(10, 10, 32, 1);
 	}
 
 	@Override
