@@ -31,7 +31,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	}
 	
 	public void overlapRule(Switch gameSwitch, IceCrate iceCrate) {
-		if(iceCrate.getPosition().equals(SpeedVector.createNullVector())){
+		if(iceCrate.getSpeedVector().getSpeed() == 0){
 			gameSwitch.incrementValidatedSwitch();
 			checkIfEndOfLevel();
 		}
