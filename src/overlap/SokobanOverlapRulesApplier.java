@@ -12,14 +12,12 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	public void overlapRule(Player player, Crate crate) {
 		Point position = (Point) crate.getPosition().clone();
 
-		// Je fais bouger la caisse a la m�me vitesse que le joueur
+		// bouger le crate à la même vitesse que le player
 		SpeedVector playerVector = player.getSpeedVector();
 		crate.setSpeedVector(playerVector);
 		crate.oneStepMove();
 
-		// Si la caisse n'a pas boug�, c'est qu'elle est contre un mur
-		// Alors je fait reculer le joueur d'un cran en arri�re pour simuler un
-		// non mouvement
+		// annuler le mouvement du player
 		if (position.equals(crate.getPosition())) {
 			player.setPosition(new Point(player.getPosition().x
 					+ playerVector.getSpeed() * playerVector.getDirection().x
@@ -27,20 +25,16 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 					* playerVector.getDirection().y * -1));
 		}
 
-		// Je reset la vitesse de la caisse pour �viter qu'elle glisse jusqu'a
-		// l'infini... et l'au del� !
+		// remettre à zero le vecteur du crate
 		crate.setSpeedVector(SpeedVector.createNullVector());
 	}
 
 	public void overlapRule(Crate crate1, Crate crate2) {
-		/*
-		 * Lorsque deux caisse s'overlappent. Il faut soit : Qu'elle pousse
-		 * l'autre Ou qu'elles s'arretent
-		 * 
-		 * Y'a plus qu'a cod� :)
-		 * 
-		 * Faites attention, la vitesse de la caisse en mouvement a �t�
-		 * r�initialis� a cause de la m�thode ci dessus.
-		 */
+		SpeedVector crate1SpeedVector = crate1.getSpeedVector();
+		crate1.setPosition(new Point(crate1.getPosition().x
+				+ crate1SpeedVector.getSpeed()
+				* crate1SpeedVector.getDirection().x * -1,
+				crate1.getPosition().y + crate1SpeedVector.getSpeed()
+						* crate1SpeedVector.getDirection().y * -1));
 	}
 }
