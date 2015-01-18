@@ -32,7 +32,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 		crate.setSpeedVector(SpeedVector.createNullVector());
 	}
 
-	public void overlapRule(Crate e1, Crate e2) {
+	public void overlapRule(Crate crate1, Crate crate2) {
 		/*
 		 * Lorsque deux caisse s'overlappent. Il faut soit : Qu'elle pousse
 		 * l'autre Ou qu'elles s'arretent
