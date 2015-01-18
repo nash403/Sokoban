@@ -1,17 +1,17 @@
 package game;
 
-import gameframework.drawing.GameCanvas;
-import gameframework.drawing.GameCanvasDefaultImpl;
 import gameframework.game.GameConfiguration;
+import gameframework.motion.overlapping.OverlapRulesApplier;
+import overlap.SokobanOverlapRulesApplier;
 
 public class SokobanConfiguration extends GameConfiguration {
-		public SokobanConfiguration(){
-			super(20,20,16,1);
-		}
-		
-		@Override
-		public GameCanvas createCanvas(){
-			return new GameCanvasDefaultImpl();
-		}
-		
+	public SokobanConfiguration() {
+		super(10, 10, 32, 1);
+	}
+
+	@Override
+	public OverlapRulesApplier createOverlapRulesApplier() {
+		return new SokobanOverlapRulesApplier();
+	}
+
 }
