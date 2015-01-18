@@ -7,13 +7,17 @@ import entities.Switch;
 import entities.Wall;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
+import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
+
+import java.util.ArrayList;
 
 public class Level1 extends GameLevelDefaultImpl {
 
 	protected int rows;
 	protected int columns;
 	protected int spriteSize;
+	protected ArrayList<GameEntity> gameEntities;
 	
 	public Level1(GameData data) {
 		super(data);
@@ -28,17 +32,24 @@ public class Level1 extends GameLevelDefaultImpl {
 	protected void init() {
 		// universe = this.data.getUniverse();
 		this.gameBoard = new GameUniverseViewPortDefaultImpl(data);
+		this.gameEntities = new ArrayList<GameEntity>();
+		
+		
 
 		/*
 		 * player prend désormé directement un data, pour prendre son canevas et
 		 * sont moveblocker
 		 */
-		universe.addGameEntity(new Switch(data, 1, 3));
-		universe.addGameEntity(new Switch(data, 6, 3));
-		universe.addGameEntity(new DefaultCrate(data, 3, 3));
-		universe.addGameEntity(new DefaultCrate(data, 3, 5));
-		universe.addGameEntity(new IceCrate(data, 5, 5));
-		universe.addGameEntity(new Player(data, 2, 2));
+		gameEntities.add(new Switch(data, 1, 3));
+		gameEntities.add(new Switch(data, 6, 3));
+		gameEntities.add(new DefaultCrate(data, 3, 3));
+		gameEntities.add(new DefaultCrate(data, 3, 5));
+		gameEntities.add(new IceCrate(data, 5, 5));
+		gameEntities.add(new Player(data, 2, 2));
+		
+		initGameEntities();
+		
+		
 		createContourWalls();
 		createCourse();
 	}
@@ -77,7 +88,24 @@ public class Level1 extends GameLevelDefaultImpl {
 		universe.addGameEntity(new Wall(data.getCanvas(), 8, 3));
 		universe.addGameEntity(new Wall(data.getCanvas(), 7, 3));
 		universe.addGameEntity(new Wall(data.getCanvas(), 8, 1));
-
+	}
+	
+	public void initGameEntities(){
+		for(GameEntity entity : gameEntities){
+			universe.addGameEntity(entity);
+		}
+	}
+	
+	public void removeGameEntities(){
+		for(GameEntity entity : gameEntities){
+			universe.removeGameEntity(entity);
+		}
+	}
+	
+	@Override
+	public void end() {
+		removeGameEntities();
+		super.end();
 	}
 
 }
