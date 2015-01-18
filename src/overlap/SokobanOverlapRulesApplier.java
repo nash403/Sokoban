@@ -9,7 +9,7 @@ import java.awt.Point;
 
 public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 
-	public void overlapRule(Crate crate, Player player) {
+	public void overlapRule(Player player, Crate crate) {
 		Point position = (Point) crate.getPosition().clone();
 
 		// Je fais bouger la caisse a la m�me vitesse que le joueur
