@@ -9,38 +9,32 @@ import java.awt.Point;
 
 public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 
-	public void overlapRule(Crate crate, Player player) {
+	public void overlapRule(Player player, Crate crate) {
 		Point position = (Point) crate.getPosition().clone();
 
-		// Je fais bouger la caisse a la mï¿½me vitesse que le joueur
-		SpeedVector playerSpeed = player.getSpeedVector();
-		crate.setSpeedVector(playerSpeed);
+		// bouger le crate Ã  la mÃªme vitesse que le player
+		SpeedVector playerVector = player.getSpeedVector();
+		crate.setSpeedVector(playerVector);
 		crate.oneStepMove();
 
-		// Si la caisse n'a pas bougï¿½, c'est qu'elle est contre un mur
-		// Alors je fait reculer le joueur d'un cran en arriï¿½re pour simuler un
-		// non mouvement
+		// annuler le mouvement du player
 		if (position.equals(crate.getPosition())) {
 			player.setPosition(new Point(player.getPosition().x
-					+ playerSpeed.getSpeed() * playerSpeed.getDirection().x
-					* -1, player.getPosition().y + playerSpeed.getSpeed()
-					* playerSpeed.getDirection().y * -1));
+					+ playerVector.getSpeed() * playerVector.getDirection().x
+					* -1, player.getPosition().y + playerVector.getSpeed()
+					* playerVector.getDirection().y * -1));
 		}
 
-		// Je reset la vitesse de la caisse pour ï¿½viter qu'elle glisse jusqu'a
-		// l'infini... et l'au delï¿½ !
-		crate.setSpeedVector(new SpeedVector(new Point(0, 0), 0));
+		// remettre Ã  zero le vecteur du crate
+		crate.setSpeedVector(SpeedVector.createNullVector());
 	}
-
-	public void overlapRule(Crate e1, Crate e2) {
-		/*
-		 * Lorsque deux caisse s'overlappent. Il faut soit : Qu'elle pousse
-		 * l'autre Ou qu'elles s'arretent
-		 * 
-		 * Y'a plus qu'a codï¿½ :)
-		 * 
-		 * Faites attention, la vitesse de la caisse en mouvement a ï¿½tï¿½
-		 * rï¿½initialisï¿½ a cause de la mï¿½thode ci dessus.
-		 */
+    //à améliorer
+	public void overlapRule(Crate crate1, Crate crate2) {
+		SpeedVector crate1SpeedVector = crate1.getSpeedVector();
+		crate1.setPosition(new Point(crate1.getPosition().x
+				+ crate1SpeedVector.getSpeed()
+				* crate1SpeedVector.getDirection().x * -1,
+				crate1.getPosition().y + crate1SpeedVector.getSpeed()
+						* crate1SpeedVector.getDirection().y * -1));
 	}
 }

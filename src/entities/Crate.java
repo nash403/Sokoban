@@ -44,9 +44,8 @@ public class Crate extends GameMovable implements Drawable, GameEntity,
 
 	@Override
 	public Rectangle getBoundingBox() {
-		Rectangle rectangle = new Rectangle(image.getWidth(), image.getHeight());
-		rectangle.setLocation(position.x, position.y);
-		return rectangle;
+		return new Rectangle(position.x, position.y, image.getWidth(),
+				image.getHeight());
 	}
 
 	@Override

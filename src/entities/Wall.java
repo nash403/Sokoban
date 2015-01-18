@@ -29,9 +29,7 @@ public class Wall implements Drawable, GameEntity, MoveBlocker {
 
 	@Override
 	public Rectangle getBoundingBox() {
-		Rectangle rectangle = new Rectangle(width, height);
-		rectangle.setLocation(x, y);
-		return rectangle;
+		return new Rectangle(x, y, width, height);
 	}
 
 	@Override

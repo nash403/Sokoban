@@ -2,6 +2,7 @@ package levels;
 
 import entities.Crate;
 import entities.Player;
+import entities.Switch;
 import entities.Wall;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
@@ -23,8 +24,10 @@ public class Level1 extends GameLevelDefaultImpl {
 		 * player prend désormé directement un data, pour prendre son canevas et
 		 * sont moveblocker
 		 */
-		universe.addGameEntity(new Player(data, 50, 50));
 		universe.addGameEntity(new Crate(data, 100, 100));
+		universe.addGameEntity(new Crate(data, 100, 150));
+		universe.addGameEntity(new Switch(data, 1, 3));
+		universe.addGameEntity(new Player(data, 50, 50));
 		createContourWalls();
 		createCourse();
 	}
