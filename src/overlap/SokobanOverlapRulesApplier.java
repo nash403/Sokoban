@@ -28,7 +28,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 		// remettre Ã  zero le vecteur du crate
 		crate.setSpeedVector(SpeedVector.createNullVector());
 	}
-
+    //à améliorer
 	public void overlapRule(Crate crate1, Crate crate2) {
 		SpeedVector crate1SpeedVector = crate1.getSpeedVector();
 		crate1.setPosition(new Point(crate1.getPosition().x
