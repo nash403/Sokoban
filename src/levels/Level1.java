@@ -11,9 +11,17 @@ import gameframework.game.GameLevelDefaultImpl;
 
 public class Level1 extends GameLevelDefaultImpl {
 
+	protected int rows;
+	protected int columns;
+	protected int spriteSize;
+	
 	public Level1(GameData data) {
 		super(data);
 		gameBoard = new GameUniverseViewPortDefaultImpl(data);
+		
+		rows = data.getConfiguration().getNbRows();
+		columns = data.getConfiguration().getNbColumns();
+		spriteSize = data.getConfiguration().getSpriteSize();
 	}
 
 	@Override
@@ -25,11 +33,11 @@ public class Level1 extends GameLevelDefaultImpl {
 		 * player prend désormé directement un data, pour prendre son canevas et
 		 * sont moveblocker
 		 */
-		universe.addGameEntity(new DefaultCrate(data, 96, 96));
-		universe.addGameEntity(new DefaultCrate(data, 96, 160));
-		universe.addGameEntity(new IceCrate(data, 160, 160));
+		universe.addGameEntity(new DefaultCrate(data, 3, 3));
+		universe.addGameEntity(new DefaultCrate(data, 3, 5));
+		universe.addGameEntity(new IceCrate(data, 5, 5));
 		universe.addGameEntity(new Switch(data, 1, 3));
-		universe.addGameEntity(new Player(data, 64, 64));
+		universe.addGameEntity(new Player(data, 2, 2));
 		createContourWalls();
 		createCourse();
 	}
@@ -42,22 +50,22 @@ public class Level1 extends GameLevelDefaultImpl {
 	}
 
 	public void createLeftSideWalls() {
-		for (int i = 0; i < 9; i++)
+		for (int i = 0; i < rows; i++)
 			universe.addGameEntity(new Wall(data.getCanvas(), 0, i));
 	}
 
 	public void createBottomSideWalls() {
-		for (int i = 0; i < 9; i++)
-			universe.addGameEntity(new Wall(data.getCanvas(), i, 9));
+		for (int i = 0; i < columns; i++)
+			universe.addGameEntity(new Wall(data.getCanvas(), i, columns-1));
 	}
 
 	public void createRightSideWalls() {
-		for (int i = 9; i > 0; i--)
-			universe.addGameEntity(new Wall(data.getCanvas(), 9, i));
+		for (int i = rows; i > 0; i--)
+			universe.addGameEntity(new Wall(data.getCanvas(), rows-1, i));
 	}
 
 	public void createTopSideWalls() {
-		for (int i = 9; i > 0; i--)
+		for (int i = columns; i > 0; i--)
 			universe.addGameEntity(new Wall(data.getCanvas(), i, 0));
 	}
 
