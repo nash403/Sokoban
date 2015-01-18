@@ -36,8 +36,8 @@ public abstract class SokobanMovable extends GameMovable implements Drawable, Ga
 
 	@Override
 	public Rectangle getBoundingBox() {
-		return new Rectangle(position.x, position.y, image.getWidth(),
-				image.getHeight());
+		return new Rectangle(position.x, position.y, spriteSize,
+			    spriteSize);
 	}
 	
 	@Override
