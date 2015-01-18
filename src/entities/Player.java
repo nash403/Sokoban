@@ -4,7 +4,6 @@ import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.motion.GameMovableDriverDefaultImpl;
 import gameframework.motion.MoveStrategyKeyboard;
-import gameframework.motion.SpeedVector;
 import gameframework.motion.overlapping.Overlappable;
 
 import java.awt.Graphics;
@@ -15,10 +14,10 @@ public class Player extends SokobanMovable implements Overlappable {
 	protected SpriteManagerDefaultImpl spriteManager;
 
 	public Player(GameData data, int x, int y) {		
-		super(data, x, y, "/images/player4.gif");
+		super(data, x, y, "/images/player.gif");
 		
-		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard(false, new SpeedVector(new Point(0,0), spriteSize));	
-	
+		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard(false);
+		keyboard.getSpeedVector().setSpeed(data.getConfiguration().getSpriteSize());
 		GameMovableDriverDefaultImpl moveDriver = new GameMovableDriverDefaultImpl();
 		moveDriver.setStrategy(keyboard);
 		moveDriver.setmoveBlockerChecker(data.getMoveBlockerChecker());
