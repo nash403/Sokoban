@@ -22,7 +22,7 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 
 	public Switch(GameData data, int x, int y) {
 		this.canvas = data.getCanvas();
-		image = new DrawableImage("/images/wall.gif", canvas);
+		image = new DrawableImage("/images/switch.gif", canvas);
 		width = image.getWidth();
 		height = image.getHeight();
 		this.x = x * width;
