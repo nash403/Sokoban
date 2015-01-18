@@ -56,8 +56,14 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 	
 	public static boolean isEndOfLevel(){
 		if(validatedSwitch == totalSwitch){
+			resetSwitch();
 			return true;
 		}
 		return false;
+	}
+	
+	protected static void resetSwitch(){
+		totalSwitch = 0;
+		validatedSwitch = 0;
 	}
 }
