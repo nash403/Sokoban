@@ -16,6 +16,7 @@ public abstract class SokobanMovable extends GameMovable implements Drawable, Ga
 	
 	protected DrawableImage image;
 	protected GameCanvas canvas;
+	protected int spriteSize;
 	
 	public SokobanMovable(GameData data, int x, int y, String imagePath) {
 		//this(data, x, y, imagePath, new SpeedVector(new Point(0,0), 0)) ; ///!\ A d'commentariser aprés la maj du framework
@@ -26,9 +27,9 @@ public abstract class SokobanMovable extends GameMovable implements Drawable, Ga
 	///!\ Mais le framework est pas encore à jour. Voir ci-dessus
 	public SokobanMovable(GameData data, int x, int y, String imagePath, SpeedVector speedVector) {
 		super();
-		
+		spriteSize = data.getConfiguration().getSpriteSize();
 		setSpeedVector(speedVector);
-		setPosition(new Point(x,y));
+		setPosition(new Point(x*spriteSize,y*spriteSize));
 		this.canvas = data.getCanvas();
 		image = new DrawableImage(imagePath, canvas);
 	}
