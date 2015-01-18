@@ -13,8 +13,8 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 		Point position = (Point) crate.getPosition().clone();
 
 		// Je fais bouger la caisse a la m�me vitesse que le joueur
-		SpeedVector playerSpeed = player.getSpeedVector();
-		crate.setSpeedVector(playerSpeed);
+		SpeedVector playerVector = player.getSpeedVector();
+		crate.setSpeedVector(playerVector);
 		crate.oneStepMove();
 
 		// Si la caisse n'a pas boug�, c'est qu'elle est contre un mur
@@ -22,14 +22,14 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 		// non mouvement
 		if (position.equals(crate.getPosition())) {
 			player.setPosition(new Point(player.getPosition().x
-					+ playerSpeed.getSpeed() * playerSpeed.getDirection().x
-					* -1, player.getPosition().y + playerSpeed.getSpeed()
-					* playerSpeed.getDirection().y * -1));
+					+ playerVector.getSpeed() * playerVector.getDirection().x
+					* -1, player.getPosition().y + playerVector.getSpeed()
+					* playerVector.getDirection().y * -1));
 		}
 
 		// Je reset la vitesse de la caisse pour �viter qu'elle glisse jusqu'a
 		// l'infini... et l'au del� !
-		crate.setSpeedVector(new SpeedVector(new Point(0, 0), 0));
+		crate.setSpeedVector(SpeedVector.createNullVector());
 	}
 
 	public void overlapRule(Crate e1, Crate e2) {
