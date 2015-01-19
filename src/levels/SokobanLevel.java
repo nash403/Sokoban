@@ -36,6 +36,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	@Override
 	protected void init() {
 		gameBoard = new GameUniverseViewPortDefaultImpl(data);
+		createResetKeyListener();
 		initEntities();
 		createMaze();
 		createLevelContour();
@@ -89,7 +90,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	public void end() {
 		super.end();
 		//A enlever quand cette methode sera accepté du coté du framework
-		//data.getCanvas().removeKeyListener(adapter);
+		data.getCanvas().removeKeyListener(adapter);
 		removeAllGameEntities();
 	}
 
