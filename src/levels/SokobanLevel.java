@@ -1,11 +1,14 @@
 package levels;
 
 import entities.Wall;
+import gameframework.drawing.GameCanvas;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +17,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	protected int rows;
 	protected int columns;
 	protected int spriteSize;
+	protected boolean finish = false;
 	protected List<GameEntity> gameEntities = new ArrayList<GameEntity>();;
 
 	public SokobanLevel(GameData data) {
@@ -60,6 +64,14 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 
 	@Override
 	public void end() {
+		GameCanvas canvas = data.getCanvas();
+		StopGameKeyListener stopListener = new StopGameKeyListener();
+		// ici draw l'imgae
+		canvas.addKeyListener(stopListener);
+		while (!finish) {
+			// wait for the player to click on Enter or Space
+		}
+		canvas.removeKeyListener(stopListener);
 		removeAllGameEntities();
 		super.end();
 	}
@@ -94,5 +106,29 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	public abstract void createMaze();
 
 	public abstract void initEntities();
+
+	class StopGameKeyListener extends KeyAdapter {
+		@Override
+		public void keyPressed(KeyEvent event) {
+			keyPressed(event.getKeyCode());
+		}
+
+		private void keyPressed(int keyCode) {
+			switch (keyCode) {
+			case KeyEvent.VK_ENTER:
+				stopLevel();
+				break;
+			case KeyEvent.VK_SPACE:
+				stopLevel();
+				break;
+			default:
+				;
+			}
+		}
+
+		private void stopLevel() {
+			finish = true;
+		}
+	}
 
 }
