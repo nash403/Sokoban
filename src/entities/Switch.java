@@ -1,12 +1,5 @@
 package entities;
 
-import gameframework.drawing.Drawable;
-import gameframework.drawing.DrawableImage;
-import gameframework.drawing.GameCanvas;
-import gameframework.game.GameData;
-import gameframework.game.GameEntity;
-import gameframework.motion.overlapping.Overlappable;
-
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;

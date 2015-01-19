@@ -2,12 +2,8 @@ package main;
 
 import game.SokobanConfiguration;
 import game.SokobanGame;
-import gameframework.base.ObservableValue;
-import gameframework.game.Game;
-import gameframework.game.GameConfiguration;
-import gameframework.game.GameData;
-import gameframework.gui.GameWindow;
 import levels.Level1;
+import levels.Level2;
 
 public class Main {
 
@@ -21,6 +17,7 @@ public class Main {
 		GameWindow gameWindow = new GameWindow("SokoBlob (by DREAMTEAM)",
 				gamedata.getCanvas(), gameConfiguration, score, life);
 		gamedata.addLevel(new Level1(gamedata));
+		gamedata.addLevel(new Level2(gamedata));
 
 		gameWindow.createGUI();
 		game.start();
