@@ -1,6 +1,5 @@
 package main;
 
-
 import game.SokobanConfiguration;
 import game.SokobanGame;
 import gameframework.base.ObservableValue;
@@ -16,14 +15,15 @@ public class Main {
 		GameConfiguration gameConfiguration = new SokobanConfiguration();
 		GameData gamedata = new GameData(gameConfiguration);
 		Game game = new SokobanGame(gamedata);
-		
-		ObservableValue<Integer> score = new ObservableValue<Integer>(5) ;
-		ObservableValue<Integer> life = new ObservableValue<Integer>(5) ;
-		GameWindow gameWindow = new GameWindow(gamedata.getCanvas(), gameConfiguration, score, life);
+
+		ObservableValue<Integer> score = new ObservableValue<Integer>(5);
+		ObservableValue<Integer> life = new ObservableValue<Integer>(5);
+		GameWindow gameWindow = new GameWindow("SokoBlob (by DREAMTEAM)",
+				gamedata.getCanvas(), gameConfiguration, score, life);
 		gamedata.addLevel(new Level1(gamedata));
-		
-		gameWindow.createGUI();		
+
+		gameWindow.createGUI();
 		game.start();
-		
+
 	}
 }

@@ -44,25 +44,24 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 
 	@Override
 	public void draw(Graphics g) {
-	
-		
+
 		validatedSwitch = 0;
 		canvas.drawImage(g, image.getImage(), x, y);
 	}
 
-	public void incrementValidatedSwitch(){
+	public void incrementValidatedSwitch() {
 		validatedSwitch++;
 	}
-	
-	public static boolean isEndOfLevel(){
-		if(validatedSwitch == totalSwitch){
-			resetSwitch();
+
+	public static boolean isEndOfLevel() {
+		if (validatedSwitch == totalSwitch) {
+			resetNbSwitchActivated();
 			return true;
 		}
 		return false;
 	}
-	
-	protected static void resetSwitch(){
+
+	public static void resetNbSwitchActivated() {
 		totalSwitch = 0;
 		validatedSwitch = 0;
 	}
