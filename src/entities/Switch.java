@@ -62,7 +62,7 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 		return false;
 	}
 	
-	protected static void resetSwitch(){
+	public static void resetSwitch(){
 		totalSwitch = 0;
 		validatedSwitch = 0;
 	}
