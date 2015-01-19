@@ -85,7 +85,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 			// If the entity is child class of the interface Crate
 			if (Crate.class.isAssignableFrom(entity.getClass())) {
 				Crate nextCrate = (Crate) entity;
-				// If it's not the concerned class
+				// If it's not the concerned object
 				if (!nextCrate.equals(overlapped)) {
 					Point crateNextto = nextCrate.getPosition();
 					Point movingCrate = (Point) overlapped.getPosition()
