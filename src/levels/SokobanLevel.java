@@ -2,13 +2,17 @@ package levels;
 
 import entities.Switch;
 import entities.Wall;
+import gameframework.drawing.DrawableImage;
+import gameframework.drawing.GameCanvas;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
 
+import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +21,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	protected int rows;
 	protected int columns;
 	protected int spriteSize;
-	protected List<GameEntity> gameEntities = new ArrayList<GameEntity>();
+	protected final List<GameEntity> gameEntities = new ArrayList<GameEntity>();
 	protected boolean finish = false;
 	protected KeyAdapter adapter;
 
@@ -80,7 +84,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	public synchronized void resetLevel() {
 		removeGameEntitiesFromUniverse();
 		gameEntities.clear();
-		Switch.resetSwitch();
+		Switch.resetNbSwitchActivated();
 		createLevelContour();
 		initEntities();
 		createMaze();
@@ -89,16 +93,25 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 
 	@Override
 	public void end() {
+		StopGameKeyListener stopListener = new StopGameKeyListener();
 		/*
-		 * GameCanvas canvas = data.getCanvas(); StopGameKeyListener
-		 * stopListener = new StopGameKeyListener(); // ici draw l'imgae
-		 * canvas.addKeyListener(stopListener); while (!finish) { // wait for
-		 * the player to click on Enter or Space }
-		 * canvas.removeKeyListener(stopListener); removeAllGameEntities();
-		 */super.end();
+		 * GameEntity entity = new LevelCompletedEntity(
+		 * "/images/LevelCompleted.gif", canvas);
+		 * data.getUniverse().addGameEntity(entity); gameBoard.paint();
+		 */
+		data.getCanvas().addKeyListener(stopListener);
+		while (!finish) {
+			try {
+				Thread.sleep(minimumDelayBetweenCycles);
+			} catch (InterruptedException e) {
+
+			}
+		}
 		// A décomentarisé quand cette methode sera accepté du coté du framework
+		// data.getCanvas().removeKeyListener(stopListener);
 		// data.getCanvas().removeKeyListener(adapter);
 		removeGameEntitiesFromUniverse();
+		super.end();
 	}
 
 	protected void createLevelContour() {
@@ -153,6 +166,22 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 
 		private void stopLevel() {
 			finish = true;
+		}
+	}
+
+	class LevelCompletedEntity extends DrawableImage implements GameEntity {
+
+		public LevelCompletedEntity(String filename, GameCanvas canvas) {
+			super(filename, canvas);
+		}
+
+		public LevelCompletedEntity(URL imageUrl, GameCanvas gameCanvas) {
+			super(imageUrl, gameCanvas);
+		}
+
+		@Override
+		public void draw(Graphics g) {
+			canvas.drawFullSizeImage(g, image);
 		}
 	}
 

@@ -29,7 +29,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	public void overlapRule(IceCrate iceCrate, DefaultCrate crate) {
 		oneStepBack(iceCrate);
 	}
-	
+
 	/**
 	 * If a crate encounter an IceCrate, it stop.
 	 */
@@ -51,8 +51,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	}
 
 	/**
-	 * Set the end of the game if every switch is overlapped
-	 * by an Crate.
+	 * Set the end of the game if every switch is overlapped by an Crate.
 	 */
 	public void checkIfEndOfLevel() {
 		data.getEndOfGame().setValue(Switch.isEndOfLevel());
