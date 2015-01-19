@@ -1,11 +1,14 @@
 package levels;
 
+import entities.Switch;
 import entities.Wall;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +17,8 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	protected int rows;
 	protected int columns;
 	protected int spriteSize;
-	protected List<GameEntity> gameEntities = new ArrayList<GameEntity>();;
+	protected List<GameEntity> gameEntities = new ArrayList<GameEntity>();
+	protected KeyAdapter adapter ; 
 
 	public SokobanLevel(GameData data) {
 		super(data);
@@ -37,6 +41,19 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 		createLevelContour();
 		addAllGameEntities();
 	}
+	
+	protected void createResetKeyListener(){
+		final SokobanLevel thislevel = this;
+		adapter = new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent event){
+				if(event.getKeyCode() == KeyEvent.VK_R){			
+					thislevel.resetLevel();	
+				}
+			}
+		};
+		data.getCanvas().addKeyListener(adapter);
+	}
 
 	public synchronized void addGameEntity(GameEntity entity) {
 		gameEntities.add(entity);
@@ -49,7 +66,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	public synchronized void addAllGameEntities() {
 		for (GameEntity entity : gameEntities) {
 			universe.addGameEntity(entity);
-		}
+		}		
 	}
 
 	public synchronized void removeAllGameEntities() {
@@ -57,11 +74,22 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 			universe.removeGameEntity(entity);
 		}
 	}
-
+	
+	public synchronized void resetLevel(){
+		removeAllGameEntities();
+		gameEntities.clear();
+		Switch.resetSwitch();
+		createLevelContour();
+		initEntities();
+		createMaze();
+		addAllGameEntities();
+	}
+	
 	@Override
 	public void end() {
-		removeAllGameEntities();
 		super.end();
+		data.getCanvas().removeKeyListener(adapter);
+		removeAllGameEntities();
 	}
 
 	protected void createLevelContour() {
@@ -72,27 +100,28 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	}
 
 	public void createLeftSideBorder() {
-		for (int i = 0; i < rows; i++)
-			universe.addGameEntity(new Wall(data.getCanvas(), 0, i));
+		for (int i = 0; i < rows-1; i++)
+			gameEntities.add(new Wall(data.getCanvas(), 0, i));
 	}
 
 	public void createBottomSideBorder() {
-		for (int i = 0; i < columns; i++)
-			universe.addGameEntity(new Wall(data.getCanvas(), i, rows - 1));
+		for (int i = 0; i < columns-1; i++)
+			gameEntities.add(new Wall(data.getCanvas(), i, rows - 1));
 	}
 
 	public void createRightSideBorder() {
-		for (int i = rows; i > 0; i--)
-			universe.addGameEntity(new Wall(data.getCanvas(), columns - 1, i));
+		for (int i = rows-1; i > 0; i--)
+			gameEntities.add(new Wall(data.getCanvas(), columns - 1, i));
 	}
 
 	public void createTopSideBorder() {
-		for (int i = columns; i > 0; i--)
-			universe.addGameEntity(new Wall(data.getCanvas(), i, 0));
+		for (int i = columns-1; i > 0; i--)
+			gameEntities.add(new Wall(data.getCanvas(), i, 0));
 	}
 
 	public abstract void createMaze();
 
 	public abstract void initEntities();
+	
 
 }
