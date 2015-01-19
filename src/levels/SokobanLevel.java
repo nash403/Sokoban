@@ -89,8 +89,8 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	@Override
 	public void end() {
 		super.end();
-		//A enlever quand cette methode sera accepté du coté du framework
-		data.getCanvas().removeKeyListener(adapter);
+		//A décomentarisé quand cette methode sera accepté du coté du framework
+		//data.getCanvas().removeKeyListener(adapter);
 		removeAllGameEntities();
 	}
 
