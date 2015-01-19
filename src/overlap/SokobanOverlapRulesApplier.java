@@ -27,14 +27,14 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	 * If a crate encounter a DefaultCrate, it stop.
 	 */
 	public void overlapRule(IceCrate iceCrate, DefaultCrate crate) {
-		OneStepBack(iceCrate);
+		oneStepBack(iceCrate);
 	}
 	
 	/**
 	 * If a crate encounter an IceCrate, it stop.
 	 */
 	public void overlapRule(IceCrate iceCrate, IceCrate iceCrate2) {
-		OneStepBack(iceCrate);
+		oneStepBack(iceCrate);
 	}
 
 	public void overlapRule(Switch gameSwitch, IceCrate iceCrate) {
@@ -61,7 +61,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	/**
 	 * Make a SokobanMovable go back one step back and make it stop.
 	 */
-	public void OneStepBack(SokobanMovable movable) {
+	public void oneStepBack(SokobanMovable movable) {
 		SpeedVector speed = movable.getSpeedVector();
 		movable.setPosition(new Point(movable.getPosition().x
 				+ speed.getSpeed() * speed.getDirection().x * -1, movable
@@ -106,6 +106,6 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 			overlapped.oneStepMove();
 		}
 
-		OneStepBack(overlapper);
+		oneStepBack(overlapper);
 	}
 }
