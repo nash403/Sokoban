@@ -19,8 +19,8 @@ public class Main {
 
 		ObservableValue<Integer> score = new ObservableValue<Integer>(5);
 		ObservableValue<Integer> life = new ObservableValue<Integer>(5);
-		GameWindow gameWindow = new GameWindow(gamedata.getCanvas(),
-				gameConfiguration, score, life);
+		GameWindow gameWindow = new GameWindow("SokoBlob (by DREAMTEAM)",
+				gamedata.getCanvas(), gameConfiguration, score, life);
 		gamedata.addLevel(new Level1(gamedata));
 		gamedata.addLevel(new Level2(gamedata));
 
