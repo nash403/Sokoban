@@ -32,7 +32,7 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 		spriteSize = data.getConfiguration().getSpriteSize();
 		this.x = x * spriteSize;
 		this.y = y * spriteSize;
-		
+
 		spriteManager = new SpriteManagerDefaultImpl(image, spriteSize, 7);
 		spriteManager.setTypes("default");
 	}
@@ -60,7 +60,7 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 	}
 
 	public static boolean isEndOfLevel() {
-		if (validatedSwitch == totalSwitch) {
+		if (validatedSwitch == totalSwitch && totalSwitch != 0) {
 			resetNbSwitchActivated();
 			return true;
 		}
