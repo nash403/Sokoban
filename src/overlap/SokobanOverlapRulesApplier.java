@@ -9,6 +9,9 @@ import entities.IceCrate;
 import entities.Player;
 import entities.SokobanMovable;
 import entities.Switch;
+import gameframework.game.GameEntity;
+import gameframework.motion.SpeedVector;
+import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 

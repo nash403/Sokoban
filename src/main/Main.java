@@ -2,6 +2,11 @@ package main;
 
 import game.SokobanConfiguration;
 import game.SokobanGame;
+import gameframework.base.ObservableValue;
+import gameframework.game.Game;
+import gameframework.game.GameConfiguration;
+import gameframework.game.GameData;
+import gameframework.gui.GameWindow;
 import levels.Level1;
 import levels.Level2;
 
