@@ -1,17 +1,14 @@
 package overlap;
 
+import java.awt.Point;
+import java.util.Iterator;
+
 import entities.Crate;
 import entities.DefaultCrate;
 import entities.IceCrate;
 import entities.Player;
 import entities.SokobanMovable;
 import entities.Switch;
-import gameframework.game.GameEntity;
-import gameframework.motion.SpeedVector;
-import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
-
-import java.awt.Point;
-import java.util.Iterator;
 
 public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 
@@ -29,7 +26,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	public void overlapRule(IceCrate iceCrate, DefaultCrate crate) {
 		oneStepBack(iceCrate);
 	}
-	
+
 	/**
 	 * If a crate encounter an IceCrate, it stop.
 	 */
@@ -51,8 +48,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	}
 
 	/**
-	 * Set the end of the game if every switch is overlapped
-	 * by an Crate.
+	 * Set the end of the game if every switch is overlapped by an Crate.
 	 */
 	public void checkIfEndOfLevel() {
 		data.getEndOfGame().setValue(Switch.isEndOfLevel());

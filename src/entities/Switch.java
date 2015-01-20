@@ -1,12 +1,5 @@
 package entities;
 
-import gameframework.drawing.Drawable;
-import gameframework.drawing.DrawableImage;
-import gameframework.drawing.GameCanvas;
-import gameframework.game.GameData;
-import gameframework.game.GameEntity;
-import gameframework.motion.overlapping.Overlappable;
-
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -44,25 +37,24 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 
 	@Override
 	public void draw(Graphics g) {
-	
-		
+
 		validatedSwitch = 0;
 		canvas.drawImage(g, image.getImage(), x, y);
 	}
 
-	public void incrementValidatedSwitch(){
+	public void incrementValidatedSwitch() {
 		validatedSwitch++;
 	}
-	
-	public static boolean isEndOfLevel(){
-		if(validatedSwitch == totalSwitch){
-			resetSwitch();
+
+	public static boolean isEndOfLevel() {
+		if (validatedSwitch == totalSwitch) {
+			resetNbSwitchActivated();
 			return true;
 		}
 		return false;
 	}
-	
-	public static void resetSwitch(){
+
+	public static void resetNbSwitchActivated() {
 		totalSwitch = 0;
 		validatedSwitch = 0;
 	}
