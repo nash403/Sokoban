@@ -68,10 +68,22 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 		data.getUniverse().addGameEntity(finishEntity);
 	}
 
-	public void placeEntities() {
-		initEntities();
-		createMaze();
-		createLevelContour();
+	@Override
+	public void end() {
+		data.getCanvas().addKeyListener(endListener);
+		while (!finishLevel) {
+			try {
+				gameBoard.paint();
+				Thread.sleep(minimumDelayBetweenCycles);
+			} catch (InterruptedException e) {
+
+			}
+		}
+		// A décomentarisé quand cette methode sera accepté du coté du framework
+		// data.getCanvas().removeKeyListener(resetListener);
+		// data.getCanvas().removeKeyListener(endListener);
+		removeAllEntitiesFromUniverse();
+		super.end();
 	}
 
 	protected void createResetKeyListener() {
@@ -133,22 +145,10 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 		}
 	}
 
-	@Override
-	public void end() {
-		data.getCanvas().addKeyListener(endListener);
-		while (!finishLevel) {
-			try {
-				gameBoard.paint();
-				Thread.sleep(minimumDelayBetweenCycles);
-			} catch (InterruptedException e) {
-
-			}
-		}
-		// A décomentarisé quand cette methode sera accepté du coté du framework
-		// data.getCanvas().removeKeyListener(resetListener);
-		// data.getCanvas().removeKeyListener(endListener);
-		removeAllEntitiesFromUniverse();
-		super.end();
+	public void placeEntities() {
+		initEntities();
+		createMaze();
+		createLevelContour();
 	}
 
 	protected void createLevelContour() {
