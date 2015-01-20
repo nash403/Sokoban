@@ -58,8 +58,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	}
 
 	public synchronized void resetLevel() {
-		stopGameLoop = false;
-		data.getCanvas().removeKeyListener(endListener);
+		// data.getCanvas().removeKeyListener(endListener);
 		Switch.resetNbSwitchActivated();
 		data.getEndOfGame().setValue(Switch.isEndOfLevel());
 		removeAllEntitiesFromUniverse();
@@ -146,8 +145,8 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 			}
 		}
 		// A décomentarisé quand cette methode sera accepté du coté du framework
-		data.getCanvas().removeKeyListener(resetListener);
-		data.getCanvas().removeKeyListener(endListener);
+		// data.getCanvas().removeKeyListener(resetListener);
+		// data.getCanvas().removeKeyListener(endListener);
 		removeAllEntitiesFromUniverse();
 		super.end();
 	}
