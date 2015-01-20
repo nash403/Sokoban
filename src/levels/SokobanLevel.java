@@ -26,7 +26,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	protected KeyAdapter adapter;
 
 	public SokobanLevel(GameData data) {
-		super(data);
+		super(data, 60);
 		gameBoard = new GameUniverseViewPortDefaultImpl(data);
 
 		rows = data.getConfiguration().getNbRows();
