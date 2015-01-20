@@ -1,8 +1,5 @@
 package overlap;
 
-import java.awt.Point;
-import java.util.Iterator;
-
 import entities.Crate;
 import entities.DefaultCrate;
 import entities.IceCrate;
@@ -12,6 +9,9 @@ import entities.Switch;
 import gameframework.game.GameEntity;
 import gameframework.motion.SpeedVector;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
+
+import java.awt.Point;
+import java.util.Iterator;
 
 public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 
@@ -75,6 +75,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 			SokobanMovable overlapped) {
 		boolean canMove = true;
 		SpeedVector speed = overlapper.getSpeedVector();
+		Point overlappedPosition = new Point(overlapped.getPosition());
 
 		Iterator<GameEntity> gameEntities = data.getUniverse()
 				.getGameEntitiesIterator();
@@ -103,8 +104,13 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 		if (canMove) {
 			overlapped.setSpeedVector(speed);
 			overlapped.oneStepMove();
+			
+			// Move the pushing Entity
+			if(!overlappedPosition.equals(overlapped.getPosition())){
+				overlapper.oneStepMove();
+			}
 		}
-
+		
 		oneStepBack(overlapper);
 	}
 }
