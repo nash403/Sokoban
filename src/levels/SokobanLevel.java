@@ -12,6 +12,7 @@ import gameframework.game.GameLevelDefaultImpl;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,8 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	}
 
 	public synchronized void resetLevel() {
-		// data.getCanvas().removeKeyListener(endListener);
+		for (KeyListener l : data.getCanvas().getKeyListeners())
+			data.getCanvas().removeKeyListener(l);
 		Switch.resetNbSwitchActivated();
 		data.getEndOfGame().setValue(Switch.isEndOfLevel());
 		removeAllEntitiesFromUniverse();
@@ -80,8 +82,8 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 			}
 		}
 		// A décomentarisé quand cette methode sera accepté du coté du framework
-		// data.getCanvas().removeKeyListener(resetListener);
-		// data.getCanvas().removeKeyListener(endListener);
+		data.getCanvas().removeKeyListener(resetListener);
+		data.getCanvas().removeKeyListener(endListener);
 		removeAllEntitiesFromUniverse();
 		super.end();
 	}
