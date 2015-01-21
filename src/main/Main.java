@@ -9,6 +9,8 @@ import gameframework.game.GameData;
 import gameframework.gui.GameWindow;
 import levels.Level1;
 import levels.Level2;
+import levels.Level3;
+import levels.Level4;
 
 public class Main {
 
@@ -23,6 +25,8 @@ public class Main {
 				gamedata.getCanvas(), gameConfiguration, score, life);
 		gamedata.addLevel(new Level1(gamedata));
 		gamedata.addLevel(new Level2(gamedata));
+		gamedata.addLevel(new Level3(gamedata));
+		gamedata.addLevel(new Level4(gamedata));
 
 		gameWindow.createGUI();
 		game.start();
