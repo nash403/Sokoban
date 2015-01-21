@@ -7,6 +7,7 @@ import gameframework.game.Game;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 import gameframework.gui.GameWindow;
+import levels.EndLevel;
 import levels.Level1;
 import levels.Level2;
 import levels.Level3;
@@ -27,6 +28,7 @@ public class Main {
 		gamedata.addLevel(new Level2(gamedata));
 		gamedata.addLevel(new Level3(gamedata));
 		gamedata.addLevel(new Level4(gamedata));
+		gamedata.addLevel(new EndLevel(gamedata));
 
 		gameWindow.createGUI();
 		game.start();

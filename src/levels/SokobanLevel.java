@@ -12,7 +12,6 @@ import gameframework.game.GameLevelDefaultImpl;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	protected final int columns;
 	protected final int spriteSize;
 	protected final List<GameEntity> gameEntities = new ArrayList<GameEntity>();
-	protected final GameEntity finishEntity = new LevelCompletedEntity(
+	protected GameEntity finishEntity = new LevelCompletedEntity(
 			"/images/LevelCompleted.gif", data.getCanvas());
 
 	protected boolean finishLevel = false;
@@ -59,8 +58,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	}
 
 	public synchronized void resetLevel() {
-		for (KeyListener l : data.getCanvas().getKeyListeners())
-			data.getCanvas().removeKeyListener(l);
+		data.getCanvas().removeKeyListener(endListener);
 		Switch.resetNbSwitchActivated();
 		data.getEndOfGame().setValue(Switch.isEndOfLevel());
 		removeAllEntitiesFromUniverse();
@@ -72,6 +70,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 
 	@Override
 	public void end() {
+		data.getCanvas().removeKeyListener(resetListener);
 		data.getCanvas().addKeyListener(endListener);
 		while (!finishLevel) {
 			try {
@@ -81,11 +80,10 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 
 			}
 		}
-		// A décomentarisé quand cette methode sera accepté du coté du framework
 		data.getCanvas().removeKeyListener(resetListener);
 		data.getCanvas().removeKeyListener(endListener);
-		removeAllEntitiesFromUniverse();
 		super.end();
+		removeAllEntitiesFromUniverse();
 	}
 
 	protected void createResetKeyListener() {
@@ -184,7 +182,8 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	 * @author NINTUNZE, DOUBLET, DELVALLET, DELVALLET, ALVAREZ
 	 *
 	 */
-	class LevelCompletedEntity extends DrawableImage implements GameEntity {
+	protected class LevelCompletedEntity extends DrawableImage implements
+			GameEntity {
 
 		public LevelCompletedEntity(String filename, GameCanvas canvas) {
 			super(filename, canvas);
