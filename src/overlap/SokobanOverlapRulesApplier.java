@@ -34,7 +34,11 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	 * If a crate encounter an IceCrate, it stop.
 	 */
 	public void overlapRule(IceCrate iceCrate, IceCrate iceCrate2) {
-		oneStepBack(iceCrate);
+		if(iceCrate.getSpeedVector().getSpeed() != 0){
+			oneStepBack(iceCrate);
+		} else {
+			oneStepBack(iceCrate2);
+		}
 	}
 
 	public void overlapRule(Switch gameSwitch, IceCrate iceCrate) {
