@@ -1,3 +1,4 @@
+package overlap;
 import static org.junit.Assert.assertTrue;
 import entities.SokobanMovable;
 import game.SokobanConfiguration;
