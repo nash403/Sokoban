@@ -1,9 +1,9 @@
 package levels;
 
 import entities.DefaultCrate;
-import entities.IceCrate;
 import entities.Player;
 import entities.Switch;
+import entities.Wall;
 import gameframework.game.GameData;
 
 public class Level4 extends SokobanLevel {
@@ -14,21 +14,32 @@ public class Level4 extends SokobanLevel {
 
 	@Override
 	public void createMaze() {
-		//No walls in this level.
+		int i, j;
+		for (i = 3; i <= 7; i++)
+			addGameEntity(new Wall(data.getCanvas(), i, 7));
+		for (i = 1; i <= 4; i++)
+			addGameEntity(new Wall(data.getCanvas(), 1, i));
+		for (i = 3; i <= 5; i++)
+			for (j = 2; j <= 4; j++)
+				addGameEntity(new Wall(data.getCanvas(), i, j));
+
+		addGameEntity(new Wall(data.getCanvas(), 7, 6));
+
 	}
 
 	@Override
 	public void initEntities() {
-		addGameEntity(new Switch(data, 3, 3));
-		addGameEntity(new Switch(data, 6, 6));
+		addGameEntity(new Switch(data, 2, 2));
+		addGameEntity(new Switch(data, 2, 6));
 		addGameEntity(new Switch(data, 3, 6));
-		addGameEntity(new Switch(data, 6, 3));
-		addGameEntity(new DefaultCrate(data, 3, 4));
+		addGameEntity(new Switch(data, 4, 6));
+
+		addGameEntity(new DefaultCrate(data, 2, 5));
 		addGameEntity(new DefaultCrate(data, 6, 5));
-		addGameEntity(new IceCrate(data, 4, 5));
-		addGameEntity(new IceCrate(data, 5, 4));
-		
-		addGameEntity(new Player(data, 1, 1));
+		addGameEntity(new DefaultCrate(data, 7, 5));
+		addGameEntity(new DefaultCrate(data, 7, 4));
+
+		addGameEntity(new Player(data, 2, 8));
 	}
 
 }

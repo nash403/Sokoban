@@ -12,6 +12,7 @@ import levels.Level1;
 import levels.Level2;
 import levels.Level3;
 import levels.Level4;
+import levels.Level5;
 
 public class Main {
 
@@ -28,6 +29,7 @@ public class Main {
 		gamedata.addLevel(new Level2(gamedata));
 		gamedata.addLevel(new Level3(gamedata));
 		gamedata.addLevel(new Level4(gamedata));
+		gamedata.addLevel(new Level5(gamedata));
 		gamedata.addLevel(new EndLevel(gamedata));
 
 		gameWindow.createGUI();
