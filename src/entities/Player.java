@@ -36,6 +36,9 @@ public class Player extends SokobanMovable implements Overlappable {
 
 		Point p = speedVector.getDirection();
 
+		/* Robot is used to release the key in order to 
+		 * make the player move once in a key pression
+		 * either you tap it or push it for a few seconds. */
 		Robot robot = null;
 		try {
 			robot = new Robot();
