@@ -23,7 +23,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	protected final int columns;
 	protected final int spriteSize;
 	protected final List<GameEntity> gameEntities = new ArrayList<GameEntity>();
-	protected final GameEntity finishEntity = new LevelCompletedEntity(
+	protected GameEntity finishEntity = new LevelCompletedEntity(
 			"/images/LevelCompleted.gif", data.getCanvas());
 
 	protected boolean finishLevel = false;
@@ -80,11 +80,10 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 
 			}
 		}
-		// A décomentarisé quand cette methode sera accepté du coté du framework
 		data.getCanvas().removeKeyListener(resetListener);
 		data.getCanvas().removeKeyListener(endListener);
-		removeAllEntitiesFromUniverse();
 		super.end();
+		removeAllEntitiesFromUniverse();
 	}
 
 	protected void createResetKeyListener() {
@@ -183,7 +182,8 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	 * @author NINTUNZE, DOUBLET, DELVALLET, DELVALLET, ALVAREZ
 	 *
 	 */
-	class LevelCompletedEntity extends DrawableImage implements GameEntity {
+	protected class LevelCompletedEntity extends DrawableImage implements
+			GameEntity {
 
 		public LevelCompletedEntity(String filename, GameCanvas canvas) {
 			super(filename, canvas);
