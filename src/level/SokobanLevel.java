@@ -98,7 +98,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 		};
 		data.getCanvas().addKeyListener(resetListener);
 	}
-
+	
 	protected void createEndLevelKeyListener() {
 		endListener = new KeyAdapter() {
 			@Override
