@@ -3,24 +3,23 @@ package game;
 import gameframework.game.Game;
 import gameframework.game.GameData;
 import gameframework.game.GameLevel;
-import gameframework.game.GameLevelDefaultImpl;
 
 import java.util.Observable;
 import java.util.Observer;
+
+import level.SokobanLevel;
 
 /**
  * Create a basic game application with menus and displays of lives and score
  */
 public class SokobanGame implements Game, Observer {
 
-	private GameLevelDefaultImpl currentPlayedLevel = null;
+	private SokobanLevel currentPlayedLevel = null;
 
 	protected final GameData data;
 
 	public SokobanGame(GameData data) {
 		this.data = data;
-		data.getScore().addObserver(this);
-		data.getLife().addObserver(this);
 		data.getEndOfGame().addObserver(this);
 	}
 
@@ -32,7 +31,7 @@ public class SokobanGame implements Game, Observer {
 				currentPlayedLevel.interrupt();
 				currentPlayedLevel = null;
 			}
-			currentPlayedLevel = (GameLevelDefaultImpl) level;
+			currentPlayedLevel = (SokobanLevel) level;
 			currentPlayedLevel.start();
 			try {
 				currentPlayedLevel.join();
@@ -50,4 +49,3 @@ public class SokobanGame implements Game, Observer {
 		}
 	}
 }
-
