@@ -3,7 +3,9 @@ package overlap;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import entity.Crate;
+import entity.IceCrate;
 import entity.SokobanMovable;
+import entity.Switch;
 import game.SokobanConfiguration;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
@@ -39,6 +41,25 @@ public class SokobanOverlapRulesApplierTest {
 	}
 
 	@Test
+	public void testThatAMovingIceCrateDontTurnOnASwitch() {
+
+		MockIceCrate iceCrate = new MockIceCrate(gamedata, 0, 0);
+		MockSwitch switchEntity = new MockSwitch(gamedata, 0, 0);
+
+		gamedata.getUniverse().addGameEntity(iceCrate);
+		gamedata.getUniverse().addGameEntity(switchEntity);
+
+		iceCrate.setSpeedVector(SpeedVector.createNullVector());
+		rulesApplier.overlapRule(switchEntity, iceCrate);
+		assertTrue(switchEntity.isActivated());
+
+		switchEntity.activated = false;
+		iceCrate.setSpeedVector(new SpeedVector(new Point(1, 0), 1));
+		rulesApplier.overlapRule(switchEntity, iceCrate);
+		assertFalse(switchEntity.isActivated());
+	}
+
+	@Test
 	public void testWhenPushingACrateThatCanMove() {
 
 		player.setSpeedVector(new SpeedVector(new Point(1, 0), 1));
@@ -56,7 +77,8 @@ public class SokobanOverlapRulesApplierTest {
 
 		assertFalse(oldPointOverlapped.equals(crate.getPosition()));
 		/*
-		 * Here the overlapper is not supposed to change his position (Unlike in the game)
+		 * Here the overlapper is not supposed to change his position (Unlike in
+		 * the game)
 		 */
 		assertTrue(oldPointOverlapper.equals(player.getPosition()));
 
@@ -111,6 +133,33 @@ public class SokobanOverlapRulesApplierTest {
 		@Override
 		public void oneStepMoveAddedBehavior() {
 
+		}
+
+	}
+
+	public class MockIceCrate extends IceCrate {
+
+		public MockIceCrate(GameData data, int x, int y) {
+			super(data, x, y);
+		}
+
+	}
+
+	public class MockSwitch extends Switch {
+
+		public boolean activated = false;
+
+		public MockSwitch(GameData data, int x, int y) {
+			super(data, x, y);
+		}
+
+		@Override
+		public void incrementValidatedSwitch() {
+			activated = true;
+		}
+
+		public boolean isActivated() {
+			return activated;
 		}
 
 	}
