@@ -68,10 +68,6 @@ public class SokobanLevelTest {
 		
 		mockLevel.removeAllEntitiesFromUniverse();
 		assertFalse(gamedata.getUniverse().getGameEntitiesIterator().hasNext());
-		
-		//	addAllEntitiesToGameUniverse();
-	
-		//	universe.removeGameEntity(entity);
 	}
 	
 }
