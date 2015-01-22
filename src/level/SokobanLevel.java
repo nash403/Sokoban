@@ -16,6 +16,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The abstract class for every level in the game, also contains the transition between levels.
+ * 
+ * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
+ *
+ */
 public abstract class SokobanLevel extends GameLevelDefaultImpl {
 
 	// FIELDS
@@ -179,8 +185,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * @author NINTUNZE, DOUBLET, DELVALLET, DELVALLET, ALVAREZ
-	 *
+	 * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
 	 */
 	protected class LevelCompletedEntity extends DrawableImage implements
 			GameEntity {

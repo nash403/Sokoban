@@ -12,6 +12,13 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+/**
+ * The goal for the gameplay, you need to put any type of crate into
+ * every switch on the level too complete it.
+ * 
+ * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
+ *
+ */
 public class Switch implements GameEntity, Drawable, Overlappable {
 
 	protected DrawableImage image;

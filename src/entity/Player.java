@@ -12,6 +12,12 @@ import java.awt.Point;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 
+/**
+ * The character the player will control
+ * 
+ * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
+ *
+ */
 public class Player extends SokobanMovable implements Overlappable {
 
 	public Player(GameData data, int x, int y) {
