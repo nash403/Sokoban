@@ -30,7 +30,6 @@ public class SokobanLevelTest {
 	public void testLevelReset() {
 		MockLevel mockLevel = new MockLevel(gamedata);
 		mockLevel.init();
-		mockLevel.createResetKeyListener();
 		
 		assertEquals(new Point(64,64),mockLevel.player.getPosition());
 		
