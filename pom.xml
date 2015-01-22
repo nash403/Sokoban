@@ -26,10 +26,24 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
         <configuration>
+	  <mainClass>main.Main</mainClass>
           <source>1.7</source>
           <target>1.7</target>
         </configuration>
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.11</version>
+	</dependency>
+	<dependency>
+		<groupId>fr.univlille1.fil.coo</groupId>
+		<artifactId>gameframework</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<scope>compile</scope>
+  	</dependency>
+  </dependencies>
 </project>
