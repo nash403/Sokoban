@@ -1,4 +1,4 @@
-package entities;
+package entity;
 
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;

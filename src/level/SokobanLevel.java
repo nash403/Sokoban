@@ -1,7 +1,7 @@
-package levels;
+package level;
 
-import entities.Switch;
-import entities.Wall;
+import entity.Switch;
+import entity.Wall;
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
@@ -24,7 +24,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 	protected final int spriteSize;
 	protected final List<GameEntity> gameEntities = new ArrayList<GameEntity>();
 	protected GameEntity finishEntity = new LevelCompletedEntity(
-			"/images/LevelCompleted.gif", data.getCanvas());
+			"/images/GameTransition.gif", data.getCanvas());
 
 	protected boolean finishLevel = false;
 	protected KeyAdapter resetListener, endListener;

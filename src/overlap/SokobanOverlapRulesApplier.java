@@ -1,11 +1,11 @@
 package overlap;
 
-import entities.Crate;
-import entities.DefaultCrate;
-import entities.IceCrate;
-import entities.Player;
-import entities.SokobanMovable;
-import entities.Switch;
+import entity.Crate;
+import entity.DefaultCrate;
+import entity.IceCrate;
+import entity.Player;
+import entity.SokobanMovable;
+import entity.Switch;
 import gameframework.game.GameEntity;
 import gameframework.motion.SpeedVector;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;

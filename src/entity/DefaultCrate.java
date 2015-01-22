@@ -1,4 +1,4 @@
-package entities;
+package entity;
 
 import gameframework.game.GameData;
 import gameframework.motion.SpeedVector;

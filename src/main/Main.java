@@ -7,12 +7,12 @@ import gameframework.game.Game;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 import gameframework.gui.GameWindow;
-import levels.EndLevel;
-import levels.Level1;
-import levels.Level2;
-import levels.Level3;
-import levels.Level4;
-import levels.Level5;
+import level.EndLevel;
+import level.Level1;
+import level.Level2;
+import level.Level3;
+import level.Level4;
+import level.Level5;
 
 public class Main {
 

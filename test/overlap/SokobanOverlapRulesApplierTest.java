@@ -2,8 +2,8 @@ package overlap;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import entities.Crate;
-import entities.SokobanMovable;
+import entity.Crate;
+import entity.SokobanMovable;
 import game.SokobanConfiguration;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;

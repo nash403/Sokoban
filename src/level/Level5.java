@@ -1,9 +1,9 @@
-package levels;
+package level;
 
-import entities.DefaultCrate;
-import entities.Player;
-import entities.Switch;
-import entities.Wall;
+import entity.DefaultCrate;
+import entity.Player;
+import entity.Switch;
+import entity.Wall;
 import gameframework.game.GameData;
 
 public class Level5 extends SokobanLevel {
