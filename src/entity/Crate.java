@@ -8,6 +8,12 @@ import gameframework.motion.overlapping.Overlappable;
 import motion.CrateGameMovableDriver;
 import motion.MoveStrategyCrate;
 
+/**
+ * Abstract class with common elements for every type of crate for the game.
+ * 
+ * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
+ * 
+ */
 public abstract class Crate extends SokobanMovable implements Overlappable {
 
 	protected DrawableImage image;

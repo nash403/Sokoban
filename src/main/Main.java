@@ -13,6 +13,12 @@ import level.Level3;
 import level.Level4;
 import level.Level5;
 
+/**
+ * Creates the game with the levels.
+ * 
+ * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {

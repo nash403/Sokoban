@@ -10,7 +10,9 @@ import java.util.Observer;
 import level.SokobanLevel;
 
 /**
- * Create a basic game application with menus and displays of lives and score
+ * Create a basic game application, a menu and displays the current level.
+ * 
+ * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
  */
 public class SokobanGame implements Game, Observer {
 

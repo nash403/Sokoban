@@ -9,6 +9,13 @@ import gameframework.motion.blocking.MoveBlocker;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+/**
+ * 
+ * Walls, used to draw borders and obstables within the game.
+ * 
+ * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
+ *
+ */
 public class Wall implements Drawable, GameEntity, MoveBlocker {
 
 	protected DrawableImage image;

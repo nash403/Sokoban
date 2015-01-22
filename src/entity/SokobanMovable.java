@@ -13,6 +13,14 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+
+/**
+ * 
+ * The class that contains all the needed content for any movable object.
+ * 
+ * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
+ *
+ */
 public abstract class SokobanMovable extends GameMovable implements Drawable, GameEntity {
 	
 	protected SpriteManagerDefaultImpl spriteManager;

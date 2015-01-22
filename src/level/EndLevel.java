@@ -3,6 +3,12 @@ package level;
 import entity.Player;
 import gameframework.game.GameData;
 
+/**
+ * A level used to show the player he ended the game.
+ * 
+ * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
+ *
+ */
 public class EndLevel extends SokobanLevel {
 
 	public EndLevel(GameData data) {
