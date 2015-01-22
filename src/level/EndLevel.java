@@ -1,13 +1,13 @@
-package levels;
+package level;
 
-import entities.Player;
+import entity.Player;
 import gameframework.game.GameData;
 
 public class EndLevel extends SokobanLevel {
 
 	public EndLevel(GameData data) {
 		super(data);
-		finishEntity = new LevelCompletedEntity("/images/LevelCompleted.gif",
+		finishEntity = new LevelCompletedEntity("/images/EndGame.gif",
 				data.getCanvas());
 	}
 

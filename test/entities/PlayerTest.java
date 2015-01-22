@@ -1,6 +1,7 @@
 package entities;
 
 import static org.junit.Assert.assertEquals;
+import entity.Player;
 import game.SokobanConfiguration;
 import game.SokobanGame;
 import gameframework.game.Game;
