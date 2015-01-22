@@ -3,7 +3,9 @@ package overlap;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import entities.Crate;
+import entities.IceCrate;
 import entities.SokobanMovable;
+import entities.Switch;
 import game.SokobanConfiguration;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
@@ -37,7 +39,26 @@ public class SokobanOverlapRulesApplierTest {
 		assertTrue(player.getPosition().equals(oldPoint));
 
 	}
-
+	
+	@Test
+	public void testThatAMovingIceCrateDontTurnOnASwitch(){
+		
+		MockIceCrate iceCrate = new MockIceCrate(gamedata, 0, 0);
+		MockSwitch switchEntity = new MockSwitch(gamedata, 0, 0);
+		
+		gamedata.getUniverse().addGameEntity(iceCrate);
+		gamedata.getUniverse().addGameEntity(switchEntity);
+		
+		iceCrate.setSpeedVector(SpeedVector.createNullVector());
+		rulesApplier.overlapRule(switchEntity, iceCrate);
+		assertTrue(switchEntity.isActivated());
+		
+		switchEntity.activated = false;
+		iceCrate.setSpeedVector(new SpeedVector(new Point(1, 0), 1));
+		rulesApplier.overlapRule(switchEntity, iceCrate);
+		assertFalse(switchEntity.isActivated());
+	}
+	
 	@Test
 	public void testWhenPushingACrateThatCanMove() {
 
@@ -111,6 +132,33 @@ public class SokobanOverlapRulesApplierTest {
 		@Override
 		public void oneStepMoveAddedBehavior() {
 
+		}
+
+	}
+	
+	public class MockIceCrate extends IceCrate {
+
+		public MockIceCrate(GameData data, int x, int y) {
+			super(data, x, y);
+		}
+
+	}
+	
+	public class MockSwitch extends Switch {
+		
+		public boolean activated = false;
+
+		public MockSwitch(GameData data, int x, int y) {
+			super(data, x, y);
+		}
+		
+		@Override
+		public void incrementValidatedSwitch() {
+			activated = true;
+		}
+		
+		public boolean isActivated(){
+			return activated;
 		}
 
 	}
