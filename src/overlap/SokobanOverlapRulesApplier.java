@@ -34,7 +34,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	 * If a crate encounter an IceCrate, it stop.
 	 */
 	public void overlapRule(IceCrate iceCrate, IceCrate iceCrate2) {
-		if(iceCrate.getSpeedVector().getSpeed() != 0){
+		if (iceCrate.getSpeedVector().getSpeed() != 0) {
 			oneStepBack(iceCrate);
 		} else {
 			oneStepBack(iceCrate2);
@@ -45,12 +45,14 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 		// If the ice Crate is not moving
 		if (iceCrate.getSpeedVector().getSpeed() == 0) {
 			gameSwitch.incrementValidatedSwitch();
+			iceCrate.setOnSwitch(true);
 			checkIfEndOfLevel();
 		}
 	}
 
 	public void overlapRule(Switch gameSwitch, DefaultCrate crate) {
 		gameSwitch.incrementValidatedSwitch();
+		crate.setOnSwitch(true);
 		checkIfEndOfLevel();
 	}
 
@@ -91,13 +93,15 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 				Crate nextCrate = (Crate) entity;
 				// If it's not the concerned object
 				if (!nextCrate.equals(overlapped)) {
-					Point crateNextto = nextCrate.getPosition();
-					Point movingCrate = (Point) overlapped.getPosition()
-							.clone();
-					movingCrate.x += speed.getSpeed() * speed.getDirection().x;
-					movingCrate.y += speed.getSpeed() * speed.getDirection().y;
+					Point crateNextPosition = nextCrate.getPosition();
+					Point movingCratePosition = (Point) overlapped
+							.getPosition().clone();
+					movingCratePosition.x += speed.getSpeed()
+							* speed.getDirection().x;
+					movingCratePosition.y += speed.getSpeed()
+							* speed.getDirection().y;
 					// If the crate is at the next position of the moving crate
-					if (movingCrate.equals(crateNextto)) {
+					if (movingCratePosition.equals(crateNextPosition)) {
 						canMove = false;
 						break;
 					}
@@ -107,14 +111,18 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 
 		if (canMove) {
 			overlapped.setSpeedVector(speed);
+			if (Crate.class.isAssignableFrom(overlapped.getClass())) {
+				Crate overlappedCrate = (Crate) overlapped;
+				if (overlappedCrate.isOnSwitch())
+					overlappedCrate.setOnSwitch(false);
+			}
 			overlapped.oneStepMove();
-			
+
 			// Move the pushing Entity
-			if(!overlappedPosition.equals(overlapped.getPosition())){
+			if (!overlappedPosition.equals(overlapped.getPosition())) {
 				overlapper.oneStepMove();
 			}
 		}
-		
 		oneStepBack(overlapper);
 	}
 }
