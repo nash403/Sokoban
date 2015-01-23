@@ -1,6 +1,7 @@
 package level;
 
 import entity.DefaultCrate;
+import entity.IceCrate;
 import entity.Player;
 import entity.Switch;
 import entity.Wall;
@@ -14,38 +15,39 @@ public class Level5 extends SokobanLevel {
 
 	@Override
 	public void createMaze() {
-		int i;
-		for (i = 1; i <= 8; i++) {
-			addGameEntity(new Wall(data.getCanvas(), 8, i));
-			addGameEntity(new Wall(data.getCanvas(), 1, i));
-		}
-		for (i = 2; i <= 7; i++) {
-			addGameEntity(new Wall(data.getCanvas(), i, 1));
-			addGameEntity(new Wall(data.getCanvas(), i, 7));
-			addGameEntity(new Wall(data.getCanvas(), i, 8));
-		}
-		for (i = 2; i <= 4; i++)
-			addGameEntity(new Wall(data.getCanvas(), i, 2));
-		for (i = 2; i <= 4; i++)
-			addGameEntity(new Wall(data.getCanvas(), 7, i));
-
-		addGameEntity(new Wall(data.getCanvas(), 4, 3));
+		addGameEntity(new Wall(data.getCanvas(), 1, 1));
+		addGameEntity(new Wall(data.getCanvas(), 2, 1));
+		addGameEntity(new Wall(data.getCanvas(), 3, 1));
+		addGameEntity(new Wall(data.getCanvas(), 8, 1));
+		addGameEntity(new Wall(data.getCanvas(), 6, 2));
+		addGameEntity(new Wall(data.getCanvas(), 8, 2));
+		addGameEntity(new Wall(data.getCanvas(), 3, 3));
+		addGameEntity(new Wall(data.getCanvas(), 6, 3));
+		addGameEntity(new Wall(data.getCanvas(), 1, 4));
+		addGameEntity(new Wall(data.getCanvas(), 8, 4));
 		addGameEntity(new Wall(data.getCanvas(), 4, 5));
-
+		addGameEntity(new Wall(data.getCanvas(), 5, 5));
+		addGameEntity(new Wall(data.getCanvas(), 1, 6));
+		addGameEntity(new Wall(data.getCanvas(), 2, 6));
+		addGameEntity(new Wall(data.getCanvas(), 3, 6));
+		addGameEntity(new Wall(data.getCanvas(), 8, 6));
+		addGameEntity(new Wall(data.getCanvas(), 4, 8));
 	}
 
 	@Override
 	public void initEntities() {
-		int i;
-		for (i = 3; i <= 5; i++)
-			addGameEntity(new Switch(data, i, 6));
-		addGameEntity(new Switch(data, 7, 6));
+		addGameEntity(new Switch(data, 3, 2));
+		addGameEntity(new Switch(data, 6, 1));
+		addGameEntity(new Switch(data, 7, 1));
+		addGameEntity(new Switch(data, 5, 8));
 
-		for (i = 3; i <= 5; i++)
-			addGameEntity(new DefaultCrate(data, i, 4));
-		addGameEntity(new DefaultCrate(data, 6, 5));
+		addGameEntity(new DefaultCrate(data, 2, 4));
+		addGameEntity(new DefaultCrate(data, 6, 4));
+		addGameEntity(new DefaultCrate(data, 5, 7));
 
-		addGameEntity(new Player(data, 6, 6));
+		addGameEntity(new IceCrate(data, 2, 7));
+
+		addGameEntity(new Player(data, 1, 5));
 	}
 
 }
