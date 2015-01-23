@@ -12,7 +12,7 @@ import java.util.Observer;
 import level.SokobanLevel;
 
 /**
- * Create a basic game application, a menu and displays the current level.
+ * A basic SokoBlob game application, a menu and displays the current level.
  * 
  * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
  */
@@ -22,19 +22,19 @@ public class SokobanGame implements Game, Observer {
 
 	protected final GameData data;
 	protected final ArrayList<GameStatusBarElement<Integer>> windowElements;
-	
+
 	@SafeVarargs
 	public SokobanGame(GameData gamedata,
-		GameStatusBarElement<Integer>... elements) {
+			GameStatusBarElement<Integer>... elements) {
 		this.data = gamedata;
 		data.getEndOfGame().addObserver(this);
 		this.windowElements = new ArrayList<GameStatusBarElement<Integer>>();
-		for(GameStatusBarElement<Integer> element : elements){
+		for (GameStatusBarElement<Integer> element : elements) {
 			windowElements.add(element);
 		}
 	}
-	
-	public void newLevel(Integer newLevel){
+
+	public void newLevel(Integer newLevel) {
 		this.windowElements.get(0).getElement().setValue(newLevel);
 		this.windowElements.get(0).update();
 	}
@@ -50,7 +50,7 @@ public class SokobanGame implements Game, Observer {
 			}
 			currentPlayedLevel = (SokobanLevel) level;
 			newLevel(currentLevel);
-			currentLevel ++;
+			currentLevel++;
 			currentPlayedLevel.start();
 			try {
 				currentPlayedLevel.join();

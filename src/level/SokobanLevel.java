@@ -17,7 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The abstract class for every level in the game, also contains the transition between levels.
+ * The abstract class for every level in the game, also contains the transition
+ * between levels.
  * 
  * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
  *
@@ -63,7 +64,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 		data.getUniverse().addGameEntity(finishEntity);
 	}
 
-	public synchronized void resetLevel() {
+	public void resetLevel() {
 		data.getCanvas().removeKeyListener(endListener);
 		Switch.resetNbSwitchActivated();
 		data.getEndOfGame().setValue(Switch.isEndOfLevel());
@@ -104,7 +105,7 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 		};
 		data.getCanvas().addKeyListener(resetListener);
 	}
-	
+
 	protected void createEndLevelKeyListener() {
 		endListener = new KeyAdapter() {
 			@Override
@@ -131,11 +132,11 @@ public abstract class SokobanLevel extends GameLevelDefaultImpl {
 		};
 	}
 
-	public synchronized void addGameEntity(GameEntity entity) {
+	public void addGameEntity(GameEntity entity) {
 		gameEntities.add(entity);
 	}
 
-	public synchronized void removeGameEntity(GameEntity entity) {
+	public void removeGameEntity(GameEntity entity) {
 		gameEntities.remove(entity);
 	}
 

@@ -14,7 +14,7 @@ public class Level3 extends SokobanLevel {
 
 	@Override
 	public void createMaze() {
-		//No walls in this level.
+		// No walls in this level.
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class Level3 extends SokobanLevel {
 		addGameEntity(new DefaultCrate(data, 6, 5));
 		addGameEntity(new IceCrate(data, 4, 5));
 		addGameEntity(new IceCrate(data, 5, 4));
-		
+
 		addGameEntity(new Player(data, 1, 1));
 	}
 

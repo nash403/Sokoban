@@ -34,7 +34,7 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 	 * If a crate encounter an IceCrate, it stop.
 	 */
 	public void overlapRule(IceCrate iceCrate, IceCrate iceCrate2) {
-		if(iceCrate.getSpeedVector().getSpeed() != 0){
+		if (iceCrate.getSpeedVector().getSpeed() != 0) {
 			oneStepBack(iceCrate);
 		} else {
 			oneStepBack(iceCrate2);
@@ -108,13 +108,13 @@ public class SokobanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 		if (canMove) {
 			overlapped.setSpeedVector(speed);
 			overlapped.oneStepMove();
-			
+
 			// Move the pushing Entity
-			if(!overlappedPosition.equals(overlapped.getPosition())){
+			if (!overlappedPosition.equals(overlapped.getPosition())) {
 				overlapper.oneStepMove();
 			}
 		}
-		
+
 		oneStepBack(overlapper);
 	}
 }

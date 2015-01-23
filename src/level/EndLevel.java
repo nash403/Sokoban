@@ -11,10 +11,15 @@ import gameframework.game.GameData;
  */
 public class EndLevel extends SokobanLevel {
 
+	protected static String DEFAULT_IMAGE_PATH = "/images/EndGame.gif";
+
 	public EndLevel(GameData data) {
+		this(data, DEFAULT_IMAGE_PATH);
+	}
+
+	public EndLevel(GameData data, String imagePath) {
 		super(data);
-		finishEntity = new LevelCompletedEntity("/images/EndGame.gif",
-				data.getCanvas());
+		finishEntity = new LevelCompletedEntity(imagePath, data.getCanvas());
 	}
 
 	@Override

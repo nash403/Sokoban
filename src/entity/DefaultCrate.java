@@ -4,15 +4,21 @@ import gameframework.game.GameData;
 import gameframework.motion.SpeedVector;
 
 /**
- * The default crate, moves only one step at a time
+ * The default crate moves only one step at a time
  * 
  * @author NINTUNZE, DOUBLET, DELVALLET Q, DELVALLET L, ALVAREZ
  * 
  */
 public class DefaultCrate extends Crate {
 
+	protected static String DEFAULT_IMAGE_PATH = "/images/crate.gif";
+
 	public DefaultCrate(GameData data, int x, int y) {
-		super(data, x, y, "/images/crate.gif");
+		this(data, x, y, DEFAULT_IMAGE_PATH);
+	}
+
+	public DefaultCrate(GameData data, int x, int y, String imagePath) {
+		super(data, x, y, imagePath);
 	}
 
 	@Override

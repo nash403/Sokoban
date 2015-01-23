@@ -29,7 +29,6 @@ public abstract class Crate extends SokobanMovable implements Overlappable {
 		setDriver(moveDriver);
 	}
 
-
 	@Override
 	public abstract void oneStepMoveAddedBehavior();
 
