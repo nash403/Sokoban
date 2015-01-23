@@ -15,6 +15,7 @@ import level.Level3;
 import level.Level4;
 import level.Level5;
 import level.Level6;
+import level.Level7;
 
 /**
  * Creates the game with the levels.
@@ -40,6 +41,7 @@ public class Main {
 		gamedata.addLevel(new Level4(gamedata));
 		gamedata.addLevel(new Level5(gamedata));
 		gamedata.addLevel(new Level6(gamedata));
+		gamedata.addLevel(new Level7(gamedata));
 		gamedata.addLevel(new EndLevel(gamedata));
 
 		gameWindow.createGUI();
