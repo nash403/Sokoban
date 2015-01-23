@@ -23,7 +23,7 @@ public class SokobanLevelTest {
 
 	ObservableValue<Integer> score = new ObservableValue<Integer>(5);
 	ObservableValue<Integer> life = new ObservableValue<Integer>(5);
-	GameWindow gameWindow = new GameWindow(gamedata.getCanvas(), gameConfiguration, score, life);
+	GameWindow gameWindow = new GameWindow("Test",gamedata.getCanvas(), gameConfiguration);
 	
 	
 	@Test
