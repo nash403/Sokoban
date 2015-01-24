@@ -27,9 +27,9 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 	protected int y;
 	protected int width;
 	protected int height;
-	protected static int TOTAL_SWITCH_NUMBER = 0;
-	protected static int NB_VALIDATED_SWITCH = 0;
-	protected static String DEFAULT_IMAGE_PATH = "/images/switch.gif";
+	protected static int total_switch_number = 0;
+	protected static int nb_validated_switch = 0;
+	protected static final String DEFAULT_IMAGE_PATH = "/images/switch.gif";
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int spriteSize;
 
@@ -38,7 +38,7 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 	}
 
 	public Switch(GameData data, int x, int y, String imagePath) {
-		TOTAL_SWITCH_NUMBER++;
+		total_switch_number++;
 		this.canvas = data.getCanvas();
 		image = new DrawableImage(imagePath, canvas);
 		spriteSize = data.getConfiguration().getSpriteSize();
@@ -61,19 +61,19 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 
 	@Override
 	public void draw(Graphics g) {
-		NB_VALIDATED_SWITCH = 0;
+		nb_validated_switch = 0;
 
 		spriteManager.draw(g, getPosition());
 		spriteManager.increment();
 	}
 
 	public void incrementValidatedSwitch() {
-		NB_VALIDATED_SWITCH++;
+		nb_validated_switch++;
 	}
 
 	public static boolean isEndOfLevel() {
-		if (NB_VALIDATED_SWITCH == TOTAL_SWITCH_NUMBER
-				&& TOTAL_SWITCH_NUMBER != 0) {
+		if (nb_validated_switch == total_switch_number
+				&& total_switch_number != 0) {
 			resetNbSwitchActivated();
 			return true;
 		}
@@ -81,7 +81,7 @@ public class Switch implements GameEntity, Drawable, Overlappable {
 	}
 
 	public static void resetNbSwitchActivated() {
-		TOTAL_SWITCH_NUMBER = 0;
-		NB_VALIDATED_SWITCH = 0;
+		total_switch_number = 0;
+		nb_validated_switch = 0;
 	}
 }

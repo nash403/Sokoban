@@ -10,7 +10,7 @@ import gameframework.game.GameData;
  */
 public class IceCrate extends Crate {
 
-	protected static String DEFAULT_IMAGE_PATH = "/images/iceCrate.gif";
+	protected static final String DEFAULT_IMAGE_PATH = "/images/iceCrate.gif";
 
 	public IceCrate(GameData data, int x, int y) {
 		this(data, x, y, DEFAULT_IMAGE_PATH);

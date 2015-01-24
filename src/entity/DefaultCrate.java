@@ -11,7 +11,7 @@ import gameframework.motion.SpeedVector;
  */
 public class DefaultCrate extends Crate {
 
-	protected static String DEFAULT_IMAGE_PATH = "/images/crate.gif";
+	protected static final String DEFAULT_IMAGE_PATH = "/images/crate.gif";
 
 	public DefaultCrate(GameData data, int x, int y) {
 		this(data, x, y, DEFAULT_IMAGE_PATH);

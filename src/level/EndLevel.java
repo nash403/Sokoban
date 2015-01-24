@@ -11,7 +11,7 @@ import gameframework.game.GameData;
  */
 public class EndLevel extends SokobanLevel {
 
-	protected static String DEFAULT_IMAGE_PATH = "/images/EndGame.gif";
+	protected static final String DEFAULT_IMAGE_PATH = "/images/EndGame.gif";
 
 	public EndLevel(GameData data) {
 		this(data, DEFAULT_IMAGE_PATH);

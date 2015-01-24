@@ -20,7 +20,7 @@ public class Wall implements Drawable, GameEntity, MoveBlocker {
 
 	protected DrawableImage image;
 	protected GameCanvas canvas;
-	protected static String DEFAULT_IMAGE_PATH = "/images/wall.gif";
+	protected static final String DEFAULT_IMAGE_PATH = "/images/wall.gif";
 	protected int x;
 	protected int y;
 	protected int width;

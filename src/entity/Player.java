@@ -20,9 +20,9 @@ import java.awt.event.KeyEvent;
  */
 public class Player extends SokobanMovable implements Overlappable {
 
-	protected static int DEFAULT_RENDERING_SIZE = 32;
-	protected static int DEFAULT_MAX_SPRITE_NUMBER = 6;
-	protected static String DEFAULT_IMAGE_PATH = "/images/player.gif";
+	protected static final int DEFAULT_RENDERING_SIZE = 32;
+	protected static final int DEFAULT_MAX_SPRITE_NUMBER = 6;
+	protected static final String DEFAULT_IMAGE_PATH = "/images/player.gif";
 
 	public Player(GameData data, int x, int y) {
 		this(data, x, y, DEFAULT_RENDERING_SIZE, DEFAULT_MAX_SPRITE_NUMBER,
