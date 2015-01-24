@@ -2,6 +2,7 @@ package entity;
 
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
+import gameframework.motion.GameMovableDriver;
 import gameframework.motion.GameMovableDriverDefaultImpl;
 import gameframework.motion.MoveStrategyKeyboard;
 import gameframework.motion.overlapping.Overlappable;
@@ -34,7 +35,7 @@ public class Player extends SokobanMovable implements Overlappable {
 		super(data, x, y, imagePath);
 
 		MoveStrategyKeyboard keyboard = initMoveStrategy(data);
-		GameMovableDriverDefaultImpl moveDriver = initGameMovableDriver(data);
+		GameMovableDriver moveDriver = initGameMovableDriver(data);
 		setDriver(moveDriver);
 		canvas.addKeyListener(keyboard);
 
@@ -52,8 +53,8 @@ public class Player extends SokobanMovable implements Overlappable {
 		return keyboard;
 	}
 
-	protected GameMovableDriverDefaultImpl initGameMovableDriver(GameData data) {
-		GameMovableDriverDefaultImpl moveDriver = new GameMovableDriverDefaultImpl();
+	protected GameMovableDriver initGameMovableDriver(GameData data) {
+		GameMovableDriver moveDriver = new GameMovableDriverDefaultImpl();
 		moveDriver.setStrategy(initMoveStrategy(data));
 		moveDriver.setmoveBlockerChecker(data.getMoveBlockerChecker());
 
