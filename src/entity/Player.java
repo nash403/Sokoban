@@ -20,21 +20,44 @@ import java.awt.event.KeyEvent;
  */
 public class Player extends SokobanMovable implements Overlappable {
 
-	public Player(GameData data, int x, int y) {
-		super(data, x, y, "/images/player.gif");
+	protected static final int DEFAULT_RENDERING_SIZE = 32;
+	protected static final int DEFAULT_MAX_SPRITE_NUMBER = 6;
+	protected static final String DEFAULT_IMAGE_PATH = "/images/player.gif";
 
+	public Player(GameData data, int x, int y) {
+		this(data, x, y, DEFAULT_RENDERING_SIZE, DEFAULT_MAX_SPRITE_NUMBER,
+				DEFAULT_IMAGE_PATH);
+	}
+
+	public Player(GameData data, int x, int y, int renderingSize,
+			int maxSpriteNumber, String imagePath) {
+		super(data, x, y, imagePath);
+
+		MoveStrategyKeyboard keyboard = initMoveStrategy(data);
+		GameMovableDriverDefaultImpl moveDriver = initGameMovableDriver(data);
+		setDriver(moveDriver);
+		canvas.addKeyListener(keyboard);
+
+		spriteManager = new SpriteManagerDefaultImpl(image, renderingSize,
+				maxSpriteNumber);
+		spriteManager.setTypes("down", "right", "left", "up");
+	}
+
+	protected MoveStrategyKeyboard initMoveStrategy(GameData data) {
 		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard(false);
 		keyboard.getSpeedVector().setSpeed(
 				data.getConfiguration().getSpriteSize());
+
+		canvas.addKeyListener(keyboard);
+		return keyboard;
+	}
+
+	protected GameMovableDriverDefaultImpl initGameMovableDriver(GameData data) {
 		GameMovableDriverDefaultImpl moveDriver = new GameMovableDriverDefaultImpl();
-		moveDriver.setStrategy(keyboard);
+		moveDriver.setStrategy(initMoveStrategy(data));
 		moveDriver.setmoveBlockerChecker(data.getMoveBlockerChecker());
-		setDriver(moveDriver);
 
-		this.canvas.addKeyListener(keyboard);
-
-		spriteManager = new SpriteManagerDefaultImpl(image, 32, 6);
-		spriteManager.setTypes("down", "right", "left", "up");
+		return moveDriver;
 	}
 
 	@Override
@@ -42,9 +65,11 @@ public class Player extends SokobanMovable implements Overlappable {
 
 		Point p = speedVector.getDirection();
 
-		/* Robot is used to release the key in order to 
-		 * make the player move once in a key pression
-		 * either you tap it or push it for a few seconds. */
+		/*
+		 * Robot is used to release the key in order to make the player move
+		 * once in a key pression either you tap it or push it for a few
+		 * seconds.
+		 */
 		Robot robot = null;
 		try {
 			robot = new Robot();

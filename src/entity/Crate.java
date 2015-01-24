@@ -18,6 +18,7 @@ public abstract class Crate extends SokobanMovable implements Overlappable {
 
 	protected DrawableImage image;
 	protected GameCanvas canvas;
+	protected boolean isOnASwitch;
 
 	public Crate(GameData data, int x, int y, String imagePath) {
 		super(data, x, y, imagePath);
@@ -27,8 +28,16 @@ public abstract class Crate extends SokobanMovable implements Overlappable {
 		moveDriver.setStrategy(moveStrategy);
 		moveDriver.setmoveBlockerChecker(data.getMoveBlockerChecker());
 		setDriver(moveDriver);
+		setOnSwitch(false);
 	}
 
+	public void setOnSwitch(boolean b) {
+		isOnASwitch = b;
+	}
+
+	public Boolean isOnSwitch() {
+		return isOnASwitch;
+	}
 
 	@Override
 	public abstract void oneStepMoveAddedBehavior();

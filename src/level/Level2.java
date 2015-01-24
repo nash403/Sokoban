@@ -16,7 +16,7 @@ public class Level2 extends SokobanLevel {
 	@Override
 	public void createMaze() {
 		addGameEntity(new Wall(data.getCanvas(), 2, 1));
-		
+
 		addGameEntity(new Wall(data.getCanvas(), 5, 6));
 		addGameEntity(new Wall(data.getCanvas(), 6, 6));
 		addGameEntity(new Wall(data.getCanvas(), 7, 6));
