@@ -21,5 +21,5 @@ The game was made by :
 Mickael Alvarez,
 Lucas Delvallet,
 Quentin Delvallet,
-Florian Doublet,
+Florian Doublet and
 Honoré Nintunze.
