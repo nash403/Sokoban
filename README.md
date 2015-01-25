@@ -18,8 +18,8 @@ Every switch must be activated by crates simultaneously in order to pass the lev
 ## Credit
 
 The game was made by : 
-Mickael Alvarez
-Lucas Delvallet
-Quentin Delvallet
-Florian Doublet
-Honoré Nintunze
+Mickael Alvarez,
+Lucas Delvallet,
+Quentin Delvallet,
+Florian Doublet,
+Honoré Nintunze.
