@@ -13,7 +13,7 @@ You can reset the level with the 'R' key. When a level is completed you can pres
 ## Goal of the game
 
 You have to push crates on the red switches. 
-Every switch must be activated by crates simultaneously in order to pass the level.
+Every switch must be activated by crates simultaneously in order to pass the level. Brown crate move one tile per one tile. Blue crates move until they meet an obstacle.
 
 ## Credit
 
