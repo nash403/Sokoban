@@ -8,7 +8,7 @@ The game framework : https://github.com/DamienCassou/lille-game-framework
 ## How to play
 
 You can move with the arrows keys
-You can reset the level with the 'R' key
+You can reset the level with the 'R' key. When a level is completed you can press the 'enter' or the 'space' key to go to the next level.
 
 ## Goal of the game
 
