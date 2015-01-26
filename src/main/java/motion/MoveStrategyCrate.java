@@ -11,4 +11,14 @@ public class MoveStrategyCrate implements MoveStrategy {
 		return speedVector;
 	}
 
+	@Override
+	public int getSpeed() {
+		return speedVector.getSpeed();
+	}
+
+	@Override
+	public void setSpeed(int speed) {
+		speedVector.setSpeed(speed);
+	}
+
 }
